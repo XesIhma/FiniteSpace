@@ -4,3 +4,6 @@ FiniteSpace to gra przeglądarkowa sci-fi, która skupia się głównie na aspek
 
 
 Wielka radość
+
+
+kjhjkhjhjmkhgit 
