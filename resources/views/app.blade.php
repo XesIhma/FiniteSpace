@@ -36,7 +36,7 @@
       <b>XesIhma</b><br>
       <b>Klan:</b> Incredible<br>
       <b>Dni w grze:</b> 116<br>
-      <b>PP:</b> 58<br>
+      <b>PP:</b>68<br>
     </div>
   </header>
   <div id="main">
