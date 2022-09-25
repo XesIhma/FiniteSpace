@@ -1,0 +1,69 @@
+#ship .content_ship{
+  padding: 0px;
+  
+}
+.content_ship{
+  overflow: hidden;
+}
+#ship .content_ship > *{
+  float:left;
+}
+#ship .nav_box{
+  position: relative;
+}
+#ship .nav_box a{
+  border-left: 0px;
+}
+
+#ship .ship_image{
+  width: 345px;
+  height: 250px;
+  background-size: cover;
+  margin: 20px 0 20px 20px;
+  border: 1px solid;
+}
+#ship .info_box, #ship .stat_box{
+  margin: 20px 0 0 20px;
+}
+#ship .info_box meter{
+  width:150px;
+}
+#ship .info_box meter#meter_gen, #ship .info_box meter#meter_aku{
+  width:120px;
+}
+
+.content_ship .eq_box{
+  margin: 20px 20px 0 20px;
+}
+.content_ship .eq_item{
+  border: 1px solid;
+  height: 62px;
+  margin-bottom: 20px;
+}
+.content_ship .eq_item > div{
+  float: left;
+}
+.content_ship .eq_box .eq_img{
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  position: relative;
+}
+.content_ship .eq_box .eq_stats{
+  margin-left: 20px;
+}
+.content_ship .eq_box .eq_stats > div{
+  margin-right: 20px;
+  float: left;
+}
+.meter{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: red;
+}
+.meter_value{
+  height: 3px;
+  background-color: green;
+}
