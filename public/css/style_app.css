@@ -6,23 +6,23 @@ main{
   min-height:650px;
   border: 1px solid;
   border-top:0px;
-  padding: 20px 20px 0px 0px;
+  padding: 15px 15px 0px 0px;
 }
 
 main div.panel{
-  margin: 0px 0px 20px 20px;
+  margin: 0px 0px 15px 15px;
   border: 1px solid;
   min-height: 100px;
-  width: calc(100% - 20px);
+  width: calc(100% - 15px);
 }
 main div.panel > *{
-  padding: 5px 20px 5px 5px;
+  padding: 5px 15px 5px 5px;
 }
 .content p{
   padding: 5px 0px 5px 5px;
 }
 .content{
-  padding: 5px 20px 5px 5px;
+  padding: 5px 15px 5px 5px;
 }
 main div.panel > p.bar{
   border-bottom: 1px solid;
@@ -36,7 +36,7 @@ header > div{
 }
 #avatar_box{
   width:100px;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 #avatar_img{
   width: 87px;
@@ -48,7 +48,7 @@ header > div{
 }
 
 #action_box{
-  margin-left: 20px;
+  margin-left: 15px;
 }
 #action_gif{
   width: 127px;
@@ -62,7 +62,7 @@ header > div{
 }
 #player_box{
   position: absolute;
-  right:20px;
+  right:15px;
 }
 
 .nav_box{

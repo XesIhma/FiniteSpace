@@ -24,3 +24,12 @@ Route::get('/home', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+Route::get('/ship', function () {
+    return view('ship_general');
+});
+Route::get('/ship_drive', function () {
+    return view('ship_drive');
+});
+Route::get('/account', function () {
+    return view('account');
+});

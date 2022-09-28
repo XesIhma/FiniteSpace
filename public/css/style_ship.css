@@ -1,3 +1,7 @@
+#ship{
+  padding: 0px;
+  min-height: 400px;
+}
 #ship .content_ship{
   padding: 0px;
   
@@ -16,14 +20,14 @@
 }
 
 #ship .ship_image{
-  width: 345px;
-  height: 250px;
+  width: 324px;
+  height: 235px;
   background-size: cover;
-  margin: 20px 0 20px 20px;
+  margin: 15px 0 15px 15px;
   border: 1px solid;
 }
 #ship .info_box, #ship .stat_box{
-  margin: 20px 0 0 20px;
+  margin: 15px 0 0 15px;
 }
 #ship .info_box meter{
   width:150px;
@@ -33,12 +37,12 @@
 }
 
 .content_ship .eq_box{
-  margin: 20px 20px 0 20px;
+  margin: 15px 15px 0 15px;
 }
 .content_ship .eq_item{
   border: 1px solid;
   height: 62px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .content_ship .eq_item > div{
   float: left;
@@ -50,10 +54,10 @@
   position: relative;
 }
 .content_ship .eq_box .eq_stats{
-  margin-left: 20px;
+  margin-left: 15px;
 }
 .content_ship .eq_box .eq_stats > div{
-  margin-right: 20px;
+  margin-right: 15px;
   float: left;
 }
 .meter{

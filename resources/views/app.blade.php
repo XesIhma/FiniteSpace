@@ -36,7 +36,7 @@
       <b>XesIhma</b><br>
       <b>Klan:</b> Incredible<br>
       <b>Dni w grze:</b> 116<br>
-      <b>PP:</b>68<br>
+      <b>PP:</b>58<br>
     </div>
   </header>
   <div id="main">
@@ -44,7 +44,7 @@
       <nav>
         <ul>
           <a href="profile"><li>Postać</li></a>
-          <a href="ship.html"><li>Statek</li></a>
+          <a href="ship"><li>Statek</li></a>
           <a href=""><li>Pojazd</li></a>
           <a href=""><li>Zakupy</li></a>
           <a href=""><li>Planeta</li></a>
@@ -60,11 +60,11 @@
     <div id="nav_right" class="nav_box">
       <nav>
         <ul>
-          <a href=""><li>Konto</li></a>
+          <a href="account"><li>Konto</li></a>
           <a href=""><li>Ustawienia</li></a>
           <a href=""><li>Pomoc</li></a>
           <a href=""><li>Premium</li></a>
-          <a href="index.html" style="background-image: url(img/logout_background.png)"><li>Wyloguj</li></a>
+          <a href="/" style="background-image: url(img/logout_background.png)"><li>Wyloguj</li></a>
         </ul>
       </nav>
     </div>

@@ -17,13 +17,13 @@
   background-size: contain;
 }
 #avatar_1 .avatar_img{
-  background-image: url(img/commander.jpg);
+  background-image: url(/../img/commander.jpg);
 }
 #avatar_2 .avatar_img{
-  background-image: url(img/plus.png);
+  background-image: url(/../img/plus.png);
 }
 #avatar_3 .avatar_img, #avatar_4 .avatar_img{
-  background-image: url(img/plus_grey.png);
+  background-image: url(/../img/plus_grey.png);
 }
 .info_box, .stat1_box, .stat2_box, .action_box{
   padding: 5px;

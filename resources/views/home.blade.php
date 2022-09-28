@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title', "Strona Główna")
-@section('site_css', "home.css")
+@section('site_css', "css/home.css")
 
 @section('content')
 
