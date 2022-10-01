@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style_welcome.css">
-  <link rel="Shortcut icon" href="img/favicon.png" />
+  <link rel="Shortcut icon" href="img/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:100, 200,300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
   
   <script src="script/jquery.js"></script>
@@ -18,14 +18,17 @@
   <header>
     <div id="logo"></div>
     <div id="login_box">
-      <form action="home">
+      <form action="/" method="post">
+        @csrf
         <div class="box">
           <label for="login">Login:</label><br>
-          <input type="text" id="login" name="login" value="">
+          <input type="text" id="login" name="login" value='{{old("login")}}'><br>
+          <span class="error">@error('login'){{$message}}@enderror</span>
         </div>
         <div class="box">
           <label for="password">Hasło:</label><br>
-          <input type="password" id="password" name="password" value="">
+          <input type="password" id="password" name="password" value=''><br>
+          <span class="error">@error('password'){{$message}}@enderror</span>
         </div>
         <div class="box" style="flex-grow: 1">
           <br><input type="submit" value="Zaloguj">
@@ -52,7 +55,7 @@
           <label for="password">Hasło:</label><br>
           <input type="password" id="password" name="password" value=""><br>
           <label for="password_1">Powtóz hasło:</label><br>
-          <input type="password" id="password_1" name="password_1" value=""><br>
+          <input type="password" id="password_1" name="password_1" value=""><br><br>
           <input type="submit" value="Zarejestruj">
         </form>
       </div>

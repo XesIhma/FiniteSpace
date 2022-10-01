@@ -1,8 +1,7 @@
-
 main{
   position: absolute;
   left:159px;
-  width: calc(100vw - 318px);
+  width: calc(100% - 318px);
   min-height:650px;
   border: 1px solid;
   border-top:0px;

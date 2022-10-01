@@ -13,6 +13,11 @@
 #login_box .box{
   flex-grow: 2;
 }
+#login_box .error{
+  color: white;
+  position: absolute;
+  padding-top: 5px;;
+}
 
 #main{
   position: relative;

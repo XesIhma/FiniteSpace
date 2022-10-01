@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style_app.css">
   <link rel="stylesheet" href=@yield('site_css')>
-  <link rel="Shortcut icon" href="img/favicon.png" />
+  <link rel="Shortcut icon" href="img/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:100, 200,300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
   
   <script src="script/jquery.js"></script>

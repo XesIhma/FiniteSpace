@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::get('/ship_drive', function () {
 Route::get('/account', function () {
     return view('account');
 });
+
+Route::post("/", [UserController::class, 'getData']);
