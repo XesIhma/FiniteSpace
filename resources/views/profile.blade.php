@@ -7,7 +7,8 @@
 
 <div id="profile" class="panel">
   <p class="bar"><b>Twoje postacie</b></p>
-  <div class="content"><p>W tej sekcji możesz zarządzać dostępnymi postaciami.</p><br>
+  <div class="content">
+    <p>W tej sekcji możesz zarządzać dostępnymi postaciami.</p><br>
     <div class="panel">
       <p class="bar"><b>Adeus</b></p>
       <div class="content, content_profile">

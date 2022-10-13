@@ -14,7 +14,6 @@
   <script src="script/jquery.js"></script>
 </head>
 <body>
-
 <div id="wrapper">
   <header>
     <div id="avatar_box">
