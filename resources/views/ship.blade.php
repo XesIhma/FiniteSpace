@@ -13,9 +13,9 @@
 				<ul>
 					<a href="ship"><li>Ogólne</li></a>
 					<a href="ship_drive"><li>Napęd</li></a>
-					<a href="ship_shield"><li>Osłony</li></a>
-					<a href="ship_arms"><li>Uzbrojenie</li></a>
-					<a href="ship_systems"><li>Układy</li></a>
+					<a href="nopage"><li>Osłony</li></a>
+					<a href="nopage"><li>Uzbrojenie</li></a>
+					<a href="nopage"><li>Układy</li></a>
 				</ul>
 			</nav>
 		</div>

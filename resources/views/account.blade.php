@@ -19,6 +19,9 @@
             <textarea id="decription" name="description" rows="4" cols="50">Twój nowy opis</textarea><br>
             <input type="submit" value="Zatwierdź">
           </form>
+          @if(session('description'))
+            <div class="alert_box">Description has been changed</div>
+          @endif
         </div>
       </div>
   </div>

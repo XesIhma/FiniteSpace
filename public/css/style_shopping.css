@@ -1,0 +1,68 @@
+.category{
+  position: relative;
+  height: 288.5px;
+  width: 100%;
+  overflow: hidden;
+}
+.category h3{
+  margin: 24px 0;
+}
+.hover_scroll{
+  position:absolute;
+  width: 74px;
+  height:100%;
+  background-color: rgba(100, 100, 100, 0.5);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.category_wraper{
+  position:absolute;
+  left:0;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  height: 318px;
+}
+.category_roller{
+  position:absolute;
+  left:0;
+  min-width: 100%;
+}
+.position{
+  display: block;
+  position: relative;
+  width: 368px;
+  height: 318px;
+  /* float: left; */
+  background-image: url(../img/light_background.png);
+  margin-right: 32px;
+  margin-left: -1px;
+  margin: -1px 32px 0 -1px;
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+}
+.position > .image{
+  width: 60%;
+  height: 159px;
+  background-size: cover;
+  background-position: center;
+  float: left;
+}
+.position > .info{
+  /* width: 40%; */
+  padding: 5px;
+  float: left;
+}
+.position:last-child{
+  margin-right: 0;
+}
+.position_name_e{
+  position: absolute;
+  bottom:24px;
+  left: 24px;
+}

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html lang="pl">
 <head>
   <title>@yield('title')</title>
   <meta charset="utf-8">
@@ -11,7 +11,8 @@
   <link rel="Shortcut icon" href="img/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:100, 200,300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
   
-  <script src="script/jquery.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/script.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -32,7 +33,7 @@
       <b>Pozostały czas:</b> 3:51:03<br>
     </div>
     <div id="player_box">
-      <b>XesIhma</b><br>
+      <b>Gracz:</b> {{session('login')}}<br>
       <b>Klan:</b> Incredible<br>
       <b>Dni w grze:</b> 116<br>
       <b>PP:</b>58<br>
@@ -44,15 +45,15 @@
         <ul>
           <a href="profile"><li>Postać</li></a>
           <a href="ship"><li>Statek</li></a>
-          <a href=""><li>Pojazd</li></a>
-          <a href=""><li>Zakupy</li></a>
-          <a href=""><li>Planeta</li></a>
-          <a href=""><li>Układ</li></a>
-          <a href=""><li>Klan</li></a>
-          <a href=""><li>Praca</li></a>
-          <a href=""><li>Walka</li></a>
-          <a href=""><li>Eventy</li></a>
-          <a href=""><li>Firma</li></a>
+          <a href="nopage"><li>Pojazd</li></a>
+          <a href="shopping"><li>Zakupy</li></a>
+          <a href="nopage"><li>Planeta</li></a>
+          <a href="nopage"><li>Układ</li></a>
+          <a href="nopage"><li>Klan</li></a>
+          <a href="nopage"><li>Praca</li></a>
+          <a href="nopage"><li>Walka</li></a>
+          <a href="nopage"><li>Eventy</li></a>
+          <a href="nopage"><li>Firma</li></a>
         </ul>
       </nav>
     </div>
@@ -60,9 +61,9 @@
       <nav>
         <ul>
           <a href="account"><li>Konto</li></a>
-          <a href=""><li>Ustawienia</li></a>
-          <a href=""><li>Pomoc</li></a>
-          <a href=""><li>Premium</li></a>
+          <a href="nopage"><li>Ustawienia</li></a>
+          <a href="nopage"><li>Pomoc</li></a>
+          <a href="nopage"><li>Premium</li></a>
           <a href="/" style="background-image: url(img/logout_background.png)"><li>Wyloguj</li></a>
         </ul>
       </nav>
@@ -77,5 +78,8 @@
     
   </footer>
 </div>
+@if ($message = Session::get('nopage'))
+  <div class="alert_box">{{$message}}</div>
+@endif
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Endurange - Online Game</title>
+  <title>FiniteSpaceEndurange - Online Game</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,8 @@
   <link rel="Shortcut icon" href="img/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:100, 200,300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
   
-  <script src="script/jquery.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/script.js"></script>
 </head>
 <body>
 
@@ -40,9 +41,9 @@
    <section id="main_section">
       <div id="promotion_box" class="box">
         <div id="promotion">
-          <h2>Gra Endurange</h2>
-          <p>Endurange to gra online w której wcielasz się w rolę kolonizatora w obcym układzie planetarnym. Czeka cię wiele możliwości rozwoju, możesz obrać ścieżkę pilota, żołnierza, górnika i wiele innych, wszystko w twoich rękach.</p>
-          <p>Endurange jest grą hard sci-fi, w której rozgrywka odbywa sięw kontekscie praw fizyki. Gracze tworzą i sprzedają praktycznie kazde dobro dostępne na rynku.</p>
+          <h2>Gra FiniteSpace</h2>
+          <p>FiniteSpace to gra online w której wcielasz się w rolę kolonizatora w obcym układzie planetarnym. Czeka cię wiele możliwości rozwoju, możesz obrać ścieżkę pilota, żołnierza, górnika i wiele innych, wszystko w twoich rękach.</p>
+          <p>FiniteSpace jest grą hard sci-fi, w której rozgrywka odbywa sięw kontekscie praw fizyki. Gracze tworzą i sprzedają praktycznie kazde dobro dostępne na rynku.</p>
         </div>
       </div>
 

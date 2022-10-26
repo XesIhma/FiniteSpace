@@ -9,23 +9,21 @@ main{
 }
 
 main div.panel{
-  margin: 0px 0px 15px 15px;
+  margin: 0px 15px 15px 15px;
   border: 1px solid;
   min-height: 100px;
   width: calc(100% - 15px);
-}
-main div.panel > *{
-  padding: 5px 15px 5px 5px;
 }
 .content p{
   padding: 5px 0px 5px 5px;
 }
 .content{
-  padding: 5px 15px 5px 5px;
+  padding: 0 15px 0 0;
 }
 main div.panel > p.bar{
   border-bottom: 1px solid;
   background-image: url(/../img/hover_background.png);
+  padding: 5px 15px 5px 5px;
 }
 
 header > div{
@@ -84,4 +82,16 @@ header > div{
 }
 #nav_right{
   right:0;
+}
+
+.alert_box{
+  z-index: 2;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%); 
+  padding: 20px 50px;
+  border: 2px solid black;
+  color: black;
+  background-color: lightgreen;
 }

@@ -1,10 +1,4 @@
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-border-color: #919292;
-font-family: 'Helvetica', 'Arial', sans-serif;
-}
+* {margin: 0;padding: 0;box-sizing: border-box;border-color: #919292;font-family: 'Helvetica', 'Arial', sans-serif;}
 html { width: 100vw; }
 a{
 color: inherit; /* blue colors for links too */
@@ -19,6 +13,7 @@ body{
   background-image: url(/../img/basic_background.png);
   color: #C1C2C2;
   overflow-x: hidden;
+  font-size: 13px;
 }
 #wrapper{
   position: relative;

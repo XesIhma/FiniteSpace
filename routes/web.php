@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\NopageController;
+use App\Http\Controllers\ShoppingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +38,21 @@ Route::get('/ship_drive', function () {
 Route::get('/account', function () {
     return view('account');
 });
+
+
+Route::get('/shopping', [ShoppingController::class, 'show']);
+
+
+
+
 Route::post('/account', [AccountController::class, 'descriptionRequest']);
 
-Route::post("/", [UserController::class, 'getData']);
+Route::post("/", [UserController::class, 'userLogin']);
+
+Route::get("/nopage", [NopageController::class, 'noPageYet']);
+
+
+
 
 //tut group middleware
 Route::group(['middleware' => ['protectedPage']], function(){

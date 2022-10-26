@@ -7,14 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    function getData(Request$req){
+    function userLogin(Request $req){
         $req->validate([
             'login' => 'required | min: 3 | max:18',
             'password' => 'required | min:8 | max:30'
         ]);
 
 
-        return $req->input();
+        $data =  $req->input();
+        $req->session()->put('login', $data['login']);
+        return redirect('home');
     }
 
     function index(){
