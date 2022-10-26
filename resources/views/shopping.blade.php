@@ -25,7 +25,6 @@
 							<div class="info">
 								<h4 class="position_name">{{$position->model}}</h4>
 								<span>Masa: {{$position->mass}}</span><br>
-								<span>Wymiary: </span><br><span>10m x 7m x 3m</span><br>
 								<span>Cena: {{$position->price}}</span><br>
 							</div>
 						</div>
