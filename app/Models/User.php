@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profiles(){
+        return Profile::where('user_id', $this->id)->get();
+    }
+    public function clan(){
+        if (Clan::where('id', $this->clan_id)->get())
+            return Clan::where('id', $this->clan_id)->get();
+        
+        return "[brak]";
+    }
 }

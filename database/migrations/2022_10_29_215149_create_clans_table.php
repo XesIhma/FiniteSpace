@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('clans', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('personal_text')->default('');
-            $table->integer('premium')->default('20');
-            //$table->foreignId('clan_id')->nullable()->constrained();
-            $table->rememberToken();
+            $table->string('tag')->unique();
+            $table->string('inner_text')->nullable();
+            $table->string('outer_text')->nullable();
+            $table->integer('members_limit')->default('6');
+            $table->integer('money')->default('0');
+            //$table->foreignId('founder_id')->constrained('users');
+            //$table->foreignId('ship_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('clans');
     }
 };

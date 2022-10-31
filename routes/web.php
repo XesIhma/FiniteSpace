@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\NopageController;
@@ -19,50 +20,42 @@ use App\Http\Controllers\ShoppingController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('root');
 
 Route::get('users', [UserController::class, 'index']);
 
-Route::get('/home', function () {
-    return view('home');
-});
-//Route::get('/profile', function () {
-//    return view('profile');
-//});
-Route::get('/ship', function () {
-    return view('ship_general');
-});
-Route::get('/ship_drive', function () {
-    return view('ship_drive');
-});
-Route::get('/account', function () {
-    return view('account');
-});
-
-
-Route::get('/shopping', [ShoppingController::class, 'show']);
-
-
-
-
 Route::post('/account', [AccountController::class, 'descriptionRequest']);
 
-Route::post("/", [UserController::class, 'userLogin']);
+//Route::post("/", [UserController::class, 'userLogin']);
+
+Route::post("/login", [AuthController::class, 'login']);
+Route::post("/register", [AuthController::class, 'register']);
+Route::get("/logout", [AuthController::class, 'logout']);
 
 Route::get("/nopage", [NopageController::class, 'noPageYet']);
 
+Route::middleware('auth')->group(function(){
 
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
 
-
-//tut group middleware
-Route::group(['middleware' => ['protectedPage']], function(){
     Route::get('/profile', function () {
         return view('profile');
     });
-});
-//tut route middleware
-// Route::get('/account', function () {
-//     return view('account');
-// })->middleware('ageProtected');
-//route::view('url','filename')->middleware('1stroutename ','2ndroutename','another');
 
+    Route::get('/ship', function () {
+        return view('ship_general');
+    });
+
+    Route::get('/ship_drive', function () {
+        return view('ship_drive');
+    });
+
+    Route::get('/shopping', [ShoppingController::class, 'show']);
+
+    Route::get('/account', function () {
+        return view('account');
+    });
+
+});

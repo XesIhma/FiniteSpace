@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FiniteSpaceEndurange - Online Game</title>
+  <title>FiniteSpace - Online Game</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +19,11 @@
   <header>
     <div id="logo"></div>
     <div id="login_box">
-      <form action="/" method="post">
+      <form action="/login" method="post">
         @csrf
         <div class="box">
           <label for="login">Login:</label><br>
-          <input type="text" id="login" name="login" value='{{old("login")}}'><br>
+          <input type="text" id="name" name="name" value='{{old("name")}}'><br>
           <span class="error">@error('login'){{$message}}@enderror</span>
         </div>
         <div class="box">
@@ -48,11 +48,12 @@
       </div>
 
       <div id="register_box" class="box">
-        <form action="">
+        <form action="/register" method="post">
+          @csrf
           <label for="login">Login:</label><br>
-          <input type="text" id="login" name="login" value=""><br>
+          <input type="text" id="name" name="name" value="{{old("login")}}"><br>
           <label for="email">E-mail:</label><br>
-          <input type="text" id="email" name="email" value=""><br>
+          <input type="text" id="email" name="email" value="{{old("email")}}"><br>
           <label for="password">Hasło:</label><br>
           <input type="password" id="password" name="password" value=""><br>
           <label for="password_1">Powtóz hasło:</label><br>
@@ -71,5 +72,11 @@
     
   </footer>
 </div>
+@if ($message = Session::get('success'))
+  <div class="alert_box">{{$message}}</div>
+@endif
+@if ($message = Session::get('error'))
+  <div class="alert_box red">{{$message}}</div>
+@endif
 </body>
 </html>

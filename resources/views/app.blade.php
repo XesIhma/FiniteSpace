@@ -18,13 +18,17 @@
 <div id="wrapper">
   <header>
     <div id="avatar_box">
-      <div id="avatar_img"></div>
+      <div id="avatar_img" style=" background-image: url(/img{{auth()->user()->profiles()[0]->image}})"></div>
     </div>
     <div id="info_box">
-      <b>Adeus</b><br>
-      <b>Lvl:</b> 31<br>
-      <b>Exp:</b> 1023/1500<br>
-      <b>UPD:</b> 13003<br>
+      @php
+        $lvl = auth()->user()->profiles()[0]->exp % 30 + 1;
+        $max_exp = $lvl*30;
+      @endphp
+      <b>{{auth()->user()->profiles()[0]->name}}</b><br>
+      <b>Lvl:</b> {{$lvl}} <br>
+      <b>Exp:</b> {{auth()->user()->profiles()[0]->exp}}/{{$max_exp}}<br>
+      <b>UPD:</b> {{auth()->user()->profiles()[0]->money}}<br>
     </div>
     <div id="action_box">
       <div id="action_gif"></div>
@@ -33,8 +37,8 @@
       <b>Pozostały czas:</b> 3:51:03<br>
     </div>
     <div id="player_box">
-      <b>Gracz:</b> {{session('login')}}<br>
-      <b>Klan:</b> Incredible<br>
+      <b>Gracz:</b> {{auth()->user()->name}}<br>
+      <b>Klan:</b> {{auth()->user()->clan()}}<br>
       <b>Dni w grze:</b> 116<br>
       <b>PP:</b>58<br>
     </div>
@@ -64,7 +68,7 @@
           <a href="nopage"><li>Ustawienia</li></a>
           <a href="nopage"><li>Pomoc</li></a>
           <a href="nopage"><li>Premium</li></a>
-          <a href="/" style="background-image: url(img/logout_background.png)"><li>Wyloguj</li></a>
+          <a href="/logout" style="background-image: url(img/logout_background.png)"><li>Wyloguj</li></a>
         </ul>
       </nav>
     </div>

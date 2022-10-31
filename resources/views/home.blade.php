@@ -6,8 +6,8 @@
 @section('content')
 
       <div id="welcome" class="panel">
-        <p class="bar"><b>Witaj XesIhma</b></p>
-        <div class="content"><p>Witaj Xesihma! Udało Ci się skutecznie zalogować. Poniżej możesz przejrzeć aktualności odnośnie konta, statków, klanu itd. Życzymy Ci miłej gry. </p></div>
+        <p class="bar"><b>Witaj {{auth()->user()->name}}</b></p>
+        <div class="content"><p>Witaj {{auth()->user()->name}}! Udało Ci się skutecznie zalogować. Poniżej możesz przejrzeć aktualności odnośnie konta, statków, klanu itd. Życzymy Ci miłej gry. </p></div>
       </div>
       <div class="column">
         <div id="space_ship" class="panel">

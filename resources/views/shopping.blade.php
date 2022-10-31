@@ -24,8 +24,11 @@
 							<div class="image" style="background-image: url(img/{{$position->image}})"></div>
 							<div class="info">
 								<h4 class="position_name">{{$position->model}}</h4>
+								@if($position->class)
+									<span>Masa: {{$position->class}}</span><br>
+								@endif
 								<span>Masa: {{$position->mass}}</span><br>
-								<span>Wymiary: </span><br><span>10m x 7m x 3m</span><br>
+								<span>Wymiary: </span><br><span>{{$position->size}}</span><br>
 								<span>Cena: {{$position->price}}</span><br>
 							</div>
 						</div>
