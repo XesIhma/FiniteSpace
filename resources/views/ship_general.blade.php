@@ -1,14 +1,14 @@
 @extends('ship')
 
-@section('ship_image', 'img/fighter1.jpg')
+@section('ship_image', "img/$ship->image")
 
 @section('content_ship')
 
 <div class="info_box">
-  <label for="meter_hp"><b>Stan:</b> 2418/3000<br></label>
-  <meter id="meter_hp" value="2418" max="3000"></meter><br>
-  <label for="meter_fuel"><b>Paliwo:</b> 99m3/200m3<br></label>
-  <meter id="meter_hp" value="99" max="200"></meter><br>
+  <label for="meter_hp"><b>Stan:</b> {{$ship->hp}}/{{$ship->hp_max}}<br></label>
+  <meter id="meter_hp" value="{{$ship->hp}}" max="{{$ship->hp_max}}"></meter><br>
+  <label for="meter_fuel"><b>Paliwo:</b> {{$ship->deuter}}m3/{{$ship->deuter_max}}m3<br></label>
+  <meter id="meter_hp" value="{{$ship->deuter}}" max="{{$ship->deuter_max}}"></meter><br>
   <b>Energetyka:</b><br>
   <label for="meter_gen"><b>Generator:</b> 40%, </label><label for="meter_aku"><b>Akumulatory:</b> 90%<br></label>
   <meter id="meter_gen" value="40" max="100"></meter>  <meter id="meter_aku" value="90" max="100"></meter>
@@ -16,9 +16,9 @@
 <div class="stat_box">
   <div class="stat1_box">
     <b>Parametry:</b><br>
-    <span>Klasa: </span><span id="class">Lekki myśliwiec</span><br>
-    <span>Masa: </span><span id="weight">13t</span><br>
-    <span>Wymiary: </span><span id="dimensions">10m x 7m x 3m</span><br>
+    <span>Klasa: </span><span id="class">{{$ship->class}}</span><br>
+    <span>Masa: </span><span id="weight">{{$ship->mass/1000}}t</span><br>
+    <span>Wymiary: </span><span id="dimensions">{{$ship->size}}</span><br>
     <span>Siła ciągu: </span><span id="thrust">1100kN</span><br>
     <span>Max v2: </span><span id="speed">5km/s</span><br>
   </div>

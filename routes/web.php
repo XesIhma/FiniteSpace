@@ -6,6 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\NopageController;
 use App\Http\Controllers\ShoppingController;
+use App\Http\Controllers\ShipController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,13 +43,10 @@ Route::middleware('auth')->group(function(){
         return view('home');
     })->name('home');
 
-    Route::get('/profile', function () {
-        return view('profile');
-    });
+    Route::get('/profile', [ProfileController::class, 'show']);
 
-    Route::get('/ship', function () {
-        return view('ship_general');
-    });
+    Route::get('/ship', [ShipController::class, 'show']);
+    Route::get('/clan', [ClanController::class, 'show']);
 
     Route::get('/ship_drive', function () {
         return view('ship_drive');

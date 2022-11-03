@@ -22,12 +22,11 @@
     </div>
     <div id="info_box">
       @php
-        $lvl = auth()->user()->profiles()[0]->exp % 30 + 1;
-        $max_exp = $lvl*30;
+        $max_exp = auth()->user()->profiles()[0]->lvl(auth()->user()->profiles()[0]->exp)*30;
       @endphp
       <b>{{auth()->user()->profiles()[0]->name}}</b><br>
-      <b>Lvl:</b> {{$lvl}} <br>
-      <b>Exp:</b> {{auth()->user()->profiles()[0]->exp}}/{{$max_exp}}<br>
+      <b>Lvl:</b> {{auth()->user()->profiles()[0]->lvl()}} <br>
+      <b>Exp:</b> {{auth()->user()->profiles()[0]->exp}}/{{auth()->user()->profiles()[0]->expMax()}}<br>
       <b>UPD:</b> {{auth()->user()->profiles()[0]->money}}<br>
     </div>
     <div id="action_box">
@@ -38,7 +37,7 @@
     </div>
     <div id="player_box">
       <b>Gracz:</b> {{auth()->user()->name}}<br>
-      <b>Klan:</b> {{auth()->user()->clan()}}<br>
+      <b>Klan:</b> <br>
       <b>Dni w grze:</b> 116<br>
       <b>PP:</b>58<br>
     </div>
@@ -53,7 +52,6 @@
           <a href="shopping"><li>Zakupy</li></a>
           <a href="nopage"><li>Planeta</li></a>
           <a href="nopage"><li>Układ</li></a>
-          <a href="nopage"><li>Klan</li></a>
           <a href="nopage"><li>Praca</li></a>
           <a href="nopage"><li>Walka</li></a>
           <a href="nopage"><li>Eventy</li></a>
@@ -68,6 +66,7 @@
           <a href="nopage"><li>Ustawienia</li></a>
           <a href="nopage"><li>Pomoc</li></a>
           <a href="nopage"><li>Premium</li></a>
+          <a href="clan"><li>Klan</li></a>
           <a href="/logout" style="background-image: url(img/logout_background.png)"><li>Wyloguj</li></a>
         </ul>
       </nav>

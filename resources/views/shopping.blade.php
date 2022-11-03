@@ -25,7 +25,7 @@
 							<div class="info">
 								<h4 class="position_name">{{$position->model}}</h4>
 								@if($position->class)
-									<span>Masa: {{$position->class}}</span><br>
+									<span>Typ: {{$position->class}}</span><br>
 								@endif
 								<span>Masa: {{$position->mass}}</span><br>
 								<span>Wymiary: </span><br><span>{{$position->size}}</span><br>
