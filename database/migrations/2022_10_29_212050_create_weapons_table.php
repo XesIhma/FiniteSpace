@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('model');
             $table->string('class');
             $table->string('description');
-            $table->string('size');
+            $table->string('size')->default('10');
             $table->string('image');
             $table->integer('status')->default('0');
             $table->integer('hp');

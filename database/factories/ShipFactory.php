@@ -25,6 +25,7 @@ class ShipFactory extends Factory
         if($price <= 0) $price = 0;
         return [
             'model' => $this->faker->randomElement(['Fighter', 'Interceptor', 'Deadly Fly', 'Oroborus', 'Nautilus']),
+            'description' => "Opis statku",
             'class' => $this->faker->randomElement(['light fighter', 'heavy fighter', 'destroyer', 'transporter']),
             'size' => "20m 15m 10m",
             'image' => $this->faker->randomElement($images),
@@ -37,7 +38,7 @@ class ShipFactory extends Factory
             'engine_slots' => $this->faker->numberBetween($min = 1, $max = 5),
             'armor_slots' => $this->faker->numberBetween($min = 10, $max = 100),
             'price' => $price,
-            'user_id' => \App\Models\User::all()->random()->id
+            'profile_id' => \App\Models\User::all()->random()->id
         ];
     }
 
