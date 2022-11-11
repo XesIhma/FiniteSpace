@@ -46,10 +46,22 @@ class User extends Authenticatable
     public function profiles(){
         return Profile::where('user_id', $this->id)->get();
     }
+    
     public function clan(){
-        if (Clan::where('id', $this->clan_id)->get())
-            return Clan::where('id', $this->clan_id)->get();
+        if (Clan::where('id', $this->clan_id)->first()){
+            return Clan::where('id', $this->clan_id)->first()->name;}
         
         return "[brak]";
     }
+
+    public function isInCouncil(){
+        $clan = Clan::where('id', $this->clan_id)->first();
+        if($clan){
+            $clan->user_id;
+            if ($this->id == $clan->user_id) return true;
+            return false;
+        }
+        return false;
+    }
+
 }

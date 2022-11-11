@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('building')->default('10');
             $table->integer('informatics')->default('10');
             $table->integer('navigation')->default('10');
-            //$table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

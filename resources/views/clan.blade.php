@@ -1,33 +1,65 @@
 @extends('app')
 
 @section('title', "Strona Główna")
-@section('site_css', "css/home.css")
+@section('site_css', "css/style_clan.css")
 
 @section('content')
 
-      <div id="welcome" class="panel">
-        <p class="bar"><b>Witaj {{auth()->user()->name}}</b></p>
-        <div class="content"><p>Witaj {{auth()->user()->name}}! Udało Ci się skutecznie zalogować. Poniżej możesz przejrzeć aktualności odnośnie konta, statków, klanu itd. Życzymy Ci miłej gry. </p></div>
+      <div class="panel">
+        <p class="bar"><b>Klan {{$clan->name}}</b></p>
+        <div class="content"><p>{{$clan->inner_text}}</p></div>
       </div>
       <div class="column">
-        <div id="space_ship" class="panel">
-          <p class="bar"><b>Statek kosmiczny</b></p>
-          <div class="content"><p>Obecnie nie posiadasz statku kosmicznego. Udaj się do zakładki Zakupy aby zdobyć jeden. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam incidunt facilis sed accusamus? Hic iusto beatae, perspiciatis illum. Hic iusto libero tempora, ut laborum ad laudantium aperiam dolores tempore, soluta.</p></div>
-        </div>
-        <div id="vehicle" class="panel">
-          <p class="bar"><b>Pojazd</b></p>
-          <div class="content"><p>Obecnie nie posiadasz pojazdu. Udaj się do zakładki zakupy aby Zdobyć jeden.</p></div>
+        <div class="panel">
+          <p class="bar"><b>Stacja kosmiczna</b></p>
+          <div class="content clan_image" style="background-image: url(img/{{$clan->spaceStationImage()}})"></div>
         </div>
       </div>
       <div class="column">
-        <div id="clan" class="panel">
-          <p class="bar"><b>Klan</b></p>
-          <div class="content"><p>Obecnie nie należysz do żadnego klanu. Udaj się do zakładki klan aby odlaleźć jakiś lub założyć swój.</p></div>
-        </div>
-        <div id="stats" class="panel">
-          <p class="bar"><b>Statystyki</b></p>
-          <div class="content"><p>Twoje statystyki: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia suscipit corporis, voluptas quod reiciendis accusantium laborum doloribus, neque porro, placeat totam facere ut, dolorem tempora doloremque perferendis eius officia. Maiores. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quam nisi natus eum eligendi. Quos doloremque, quaerat recusandae nulla eum quisquam ducimus deserunt pariatur, at ipsam itaque, excepturi assumenda possimus.</p></div>
+        <div class="panel">
+          <p class="bar"><b>Siedziba</b></p>
+          <div class="content clan_image" style="background-image: url(img/capitol.jpg)"></div>
         </div>
       </div>
+      <div class="column">
+        <div class="panel">
+          <p class="bar"><b>Informacje</b></p>
+          <div class="content">
+            <table>
+              <tr>
+                <th>Nazwa: </td>
+                <th><b>{{$clan->name}} [ {{$clan->tag}} ]</b></td>
+              </tr>
+              <tr>
+                <td>Założyciel: </td>
+                <td><b>{{$clan->founder()}}</b></td>
+              </tr>
+              <tr>
+                <td>Kapitał: </td>
+                <td><b>{{$clan->money}}</b></td>
+              </tr>
+              <tr>
+                <td>Członkowie: </td>
+                <td><b>{{$clan->numberOfMembers()}} / {{$clan->members_limit}}</b></td>
+              </tr>
+              <tr>
+                <td>Punkty: </td>
+                <td><b>1.023</b></td>
+              </tr>
+              <tr>
+                <td>Twoja ranga: </td>
+                <td><b>Kadet</b></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="panel">
+          <p class="bar"><b>Siedziba</b></p>
+          <div class="content clan_image" style="background-image: url(img/capitol.jpg)"></div>
+        </div>
+      </div>
+      
 
 @endsection

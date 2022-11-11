@@ -18,19 +18,19 @@ return new class extends Migration
             $table->string('model');
             $table->string('class');
             $table->string('description');
-            $table->string('size');
-            $table->string('image');
+            $table->string('size')->default('5');
+            $table->string('image')->default('armors/default.jpg');
             $table->integer('status')->default('1');
-            $table->integer('hp');
-            $table->integer('hp_max');
-            $table->integer('resistance');
-            $table->integer('mass');
+            $table->integer('hp')->default('100');
+            $table->integer('hp_max')->default('100');
+            $table->integer('resistance')->default('50');
+            $table->integer('mass')->default('30');
             $table->string('slot')->default('armor');
             $table->integer('price')->default('0');
             $table->integer('last_price')->nullable();
             $table->timestamp('bought_at')->nullable();
-            //$table->foreignId('profile_id')->constrained();
-            //$table->foreignId('ship_id')->constrained();
+            $table->foreignId('profile_id')->nullable()->constrained();
+            $table->foreignId('ship_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

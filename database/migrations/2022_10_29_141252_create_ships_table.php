@@ -25,6 +25,10 @@ return new class extends Migration
             $table->integer('hp_max')->default('100');
             $table->double('deuter', 10, 3)->default('0');
             $table->double('deuter_max', 10, 3)->default('100');
+            $table->double('deuter_usage', 10, 3)->default('0');
+            $table->double('deuter_usage_max', 10, 3)->default('0');
+            $table->double('oxygen_usage', 10, 3)->default('10');
+            $table->double('oxygen_usage_max', 10, 3)->default('10');
             $table->integer('power')->default('0');
             $table->integer('power_max')->default('100');
             $table->integer('mass')->default('10000');
@@ -34,7 +38,8 @@ return new class extends Migration
             $table->integer('price')->default('20000');
             $table->integer('last_price')->nullable();
             $table->timestamp('bought_at')->nullable();
-            //$table->foreignId('profile_id')->constrained();
+            $table->foreignId('profile_id')->nullable()->constrained();
+            $table->foreignId('clan_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

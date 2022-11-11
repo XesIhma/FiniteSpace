@@ -44,8 +44,8 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-        'protectedPage' => [
-            \App\Http\Middleware\groupCheck::class, //tut
+        'clanCouncil' => [
+            \App\Http\Middleware\inCouncil::class //tut
         ]
     ];
 

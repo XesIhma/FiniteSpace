@@ -22,9 +22,27 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'premium' => 20
         ]);
+        $rand = rand(1, 4);
+        if($rand == 1){
+            $profile_name = 'Rudolf';
+            $profile_image = '/avatars/mechanic.jpg';
+        }
+        elseif($rand == 2){
+            $profile_name = 'Alfred';
+            $profile_image = '/avatars/pilot.jpg';
+        }
+        elseif($rand == 3){
+            $profile_name = 'Oskar';
+            $profile_image = '/avatars/trader.jpg';
+        }
+        else{
+            $profile_name = 'Alice';
+            $profile_image = '/avatars/girl.jpg';
+        }
         $profile = Profile::create([
-            'name' => 'Alice',
-            'image' => '/avatars/girl.jpg',
+            
+            'name' => $profile_name,
+            'image' => $profile_image,
             'user_id' => $user->id
           
         ]);
@@ -37,7 +55,7 @@ class AuthController extends Controller
             return redirect('home');
         }
 
-        return back()->with('error', "Błędny login lub hasło");
+        return back()->with('error', 'Błędny login lub hasło');
     }
 
     public function logout(Request $request){

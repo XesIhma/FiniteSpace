@@ -8,7 +8,7 @@ class NopageController extends Controller
 {
     
     public function noPageYet(Request $req){
-        $req->session()->flash('nopage', "There's no page yet");
+        $req->session()->flash('success', "There's no page yet");
         return redirect()->back();
     }
 }

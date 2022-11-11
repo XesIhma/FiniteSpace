@@ -37,9 +37,9 @@
     </div>
     <div id="player_box">
       <b>Gracz:</b> {{auth()->user()->name}}<br>
-      <b>Klan:</b> <br>
+      <b>Klan:</b> {{auth()->user()->clan()}}<br>
       <b>Dni w grze:</b> 116<br>
-      <b>PP:</b>58<br>
+      <b>PP:</b> {{auth()->user()->premium}}<br>
     </div>
   </header>
   <div id="main">
@@ -81,8 +81,11 @@
     
   </footer>
 </div>
-@if ($message = Session::get('nopage'))
-  <div class="alert_box">{{$message}}</div>
+@if (session('success'))
+  <div class="alert_box">{{session('success')}}</div>
+@endif
+@if (session('error'))
+  <div class="alert_box red">{{session('error')}}</div>
 @endif
 </body>
 </html>

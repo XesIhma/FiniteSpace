@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('personal_text')->default('');
-            $table->integer('premium')->default('20');
-            $table->rememberToken();
+            $table->foreignId('clan_id');
+            $table->foreignId('user_id');
+            $table->string('application');
+            $table->integer('status')->default('0'); //0 send 1 accepted 2 rejected
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('applications');
     }
 };

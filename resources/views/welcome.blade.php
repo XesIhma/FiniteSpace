@@ -50,8 +50,8 @@
       <div id="register_box" class="box">
         <form action="/register" method="post">
           @csrf
-          <label for="login">Login:</label><br>
-          <input type="text" id="name" name="name" value="{{old("login")}}"><br>
+          <label for="name">Login:</label><br>
+          <input type="text" id="name" name="name" value="{{old("name")}}"><br>
           <label for="email">E-mail:</label><br>
           <input type="text" id="email" name="email" value="{{old("email")}}"><br>
           <label for="password">Hasło:</label><br>
@@ -72,11 +72,15 @@
     
   </footer>
 </div>
-@if ($message = Session::get('success'))
-  <div class="alert_box">{{$message}}</div>
+@if (session('success'))
+  <div class="alert_box">
+    {{session('success')}}
+  </div>
 @endif
-@if ($message = Session::get('error'))
-  <div class="alert_box red">{{$message}}</div>
+@if (session('error'))
+  <div class="alert_box red">
+    {{ session('error') }}
+  </div>
 @endif
 </body>
 </html>

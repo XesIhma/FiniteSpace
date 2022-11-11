@@ -18,26 +18,26 @@ return new class extends Migration
             $table->string('model');
             $table->string('class');
             $table->string('description');
-            $table->string('size');
-            $table->string('image');
+            $table->string('size')->default('20');
+            $table->string('image')->default('engines/default.jpg');
             $table->integer('status')->default('0');//0 - offline 1 - online 2 - standby
-            $table->integer('hp');
-            $table->integer('hp_max');
+            $table->integer('hp')->default('100');
+            $table->integer('hp_max')->default('100');
             $table->double('deuter_usage', 10, 3)->default('0');
-            $table->double('deuter_usage_max', 10, 3);
+            $table->double('deuter_usage_max', 10, 3)->default('50');
             $table->double('oxygen_usage', 10, 3)->default('0');
-            $table->double('oxygen_usage_max', 10, 3);
+            $table->double('oxygen_usage_max', 10, 3)->default('150');
             $table->integer('power')->default('0');
-            $table->integer('power_max');
-            $table->integer('mass');
+            $table->integer('power_max')->default('100');
+            $table->integer('mass')->default('500');
             $table->integer('thrust')->default('0');
-            $table->integer('thrust_max');
+            $table->integer('thrust_max')->default('1000');
             $table->string('slot')->default('engine');
             $table->integer('price')->default('0');
             $table->integer('last_price')->nullable();
             $table->timestamp('bought_at')->nullable();
-            //$table->foreignId('profile_id')->constrained();
-            //$table->foreignId('ship_id')->constrained();
+            $table->foreignId('profile_id')->nullable()->constrained();
+            $table->foreignId('ship_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

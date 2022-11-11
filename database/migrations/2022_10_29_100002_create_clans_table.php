@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('tag')->unique();
+            $table->foreignId('user_id')->constrained();
             $table->string('inner_text')->nullable();
             $table->string('outer_text')->nullable();
             $table->integer('members_limit')->default('6');
             $table->integer('money')->default('0');
-            //$table->foreignId('founder_id')->constrained('users');
-            //$table->foreignId('ship_id')->nullable()->constrained();
+            $table->integer('apply')->default('0');
             $table->timestamps();
         });
     }
