@@ -67,5 +67,6 @@ Route::middleware('auth')->group(function(){
 Route::middleware('clanCouncil')->group(function(){
 
     Route::get('/clanmanage', [ClanController::class, 'manage']);
+    Route::get('/hr', [ClanController::class, 'hr']);
 
 });

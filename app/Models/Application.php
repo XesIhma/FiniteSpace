@@ -10,4 +10,9 @@ class Application extends Model
     use HasFactory;
 
     protected $fillable = ['clan_id', 'user_id', 'application'];
+
+    public function user(){
+        $user = User::where('id', $this->user_id)->first();
+        return $user;
+    }
 }

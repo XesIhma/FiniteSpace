@@ -64,4 +64,9 @@ class User extends Authenticatable
         return false;
     }
 
+    public function rank(){
+        $rank = Rank::where('id', $this->rank_id)->first();
+        return $rank;
+    }
+
 }

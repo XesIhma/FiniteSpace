@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Clan;
 use App\Models\User;
 use App\Models\Application;
+use App\Models\Rank;
 
 class ClanController extends Controller
 {
@@ -43,6 +44,23 @@ class ClanController extends Controller
                 'user_id' => $user->id
             ]);
 
+            $rank = Rank::create([
+                'clan_id' => $clan->id,
+                'name' => 'Założyciel',
+                'accept_applications' => 1,
+                'send_invitations' => 1,
+                'remove_users' => 1,
+                'change_rank' => 1,
+                'modify_text' => 1,
+                'base_expansion' => 1,
+                'fleet_construction' => 1
+            ]);
+            $rank = Rank::create([
+                'clan_id' => $clan->id,
+                'name' => 'Kadet',
+                'default' => 1,
+            ]);
+
             $user->premium = $user->premium - 50;
             $user->clan_id = $clan->id;
             $user->save();
@@ -58,13 +76,16 @@ class ClanController extends Controller
         if($clan->numberOfMembers() < $clan->members_limit){
             if($clan->apply === 2){
                 $user->clan_id = $clan->id;
+                $user->rank_id = Rank::where([
+                    ['clan_id', '=', $clan->id],
+                    ['default_rank', '=', '1']])->first()->id;
                 $user->save();
                 return view('/clan', ['clan' => $clan])->with('success', "Witamy w klanie $clan->name!");
             }
             elseif($clan->apply === 1){
                 return view('/apply', ['clan' => $clan]);
             }
-            else return back()->with('error', "Nie da się dołączyćdo tego klanu");
+            else return back()->with('error', "Nie da się dołączy ćdo tego klanu");
         }
         else return back()->with('error', "Ten klan ma już maksymalną ilość członków");
     }
@@ -87,5 +108,18 @@ class ClanController extends Controller
     function manage(Request $request){
         $clan = Clan::where('id',  auth()->user()->clan_id)->first();
         if ($clan) return view('clanmanage', ['clan' => $clan]);
+    }
+
+    function hr(Request $request){
+        $clan = Clan::where('id',  auth()->user()->clan_id)->first();
+        $applications = Application::where([
+            ['clan_id', '=', $clan->id],
+            ['user_id', '=',  auth()->user()->id]])->get();
+        $members = User::where('clan_id', $clan->id)->get();
+
+        return view('hr', [
+            'applications' => $applications, 
+            'clan' => $clan,
+            'members' => $members]);
     }
 }
