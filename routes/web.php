@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/clan', [ClanController::class, 'show']);
     Route::get('/apply', [ClanController::class, 'apply']);
     Route::post('/apply', [ClanController::class, 'applicationForm']);
+    Route::get('/accept_invitation', [ClanController::class, 'acceptInvitation']);
 
     Route::get('/ship_drive', function () {
         return view('ship_drive');
@@ -67,6 +68,10 @@ Route::middleware('auth')->group(function(){
 Route::middleware('clanCouncil')->group(function(){
 
     Route::get('/clanmanage', [ClanController::class, 'manage']);
+    Route::get('/accept', [ClanController::class, 'accept']);
     Route::get('/hr', [ClanController::class, 'hr']);
+
+    Route::get('change_way_of_joining', [ClanController::class, 'change_way_of_joining']);
+    Route::get('invite', [ClanController::class, 'invite']);
 
 });

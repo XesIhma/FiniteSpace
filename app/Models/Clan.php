@@ -26,4 +26,13 @@ class Clan extends Model
         return User::where('id', $this->user_id)->first()->name;
     }
 
+    public function addUser($user){
+        $user->clan_id = $this->id;
+                $user->rank_id = Rank::where([
+                    ['clan_id', '=', $this->id],
+                    ['default_rank', '=', '1']])->first()->id;
+                $user->save();
+                return view('/clan', ['clan' => $this])->with('success', "Witamy w klanie $this->name!");
+    }
+
 }

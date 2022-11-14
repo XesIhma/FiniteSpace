@@ -30,6 +30,25 @@
             </form> 
           </div>
         </div>
+        <div class="panel">
+          <p class="bar"><b>Twoje zaproszenia</b></p>
+          <div class="content">
+            <table>
+              <tr>
+                <th colspan="3">Klan</th>
+              </tr>
+              @foreach ($invitations as $invitation)
+              <tr>
+                <td>{{$invitation->clan_name()}}</td>
+                <td><a href="accept_invitation?clan_id={{$invitation->clan_id}}&positive=1" style="background-color: green">Tak</a></td>
+                <td><a href="accept_invitation?clan_id={{$invitation->clan_id}}&positive=0" style="background-color: red">Nie</a></td>
+              </tr>
+              </tr>
+              @endforeach
+            </table> 
+
+          </div>
+        </div>
       </div>
 
       <div class="column">

@@ -114,6 +114,7 @@
           <p class="bar"><b>Siedziba</b></p>
           <div class="content clan_image" style="background-image: url(img/capitol.jpg)"></div>
         </div>
+        
         @if(auth()->user()->rank()->send_invitations)
         <div class="panel">
           <p class="bar"><b>Rekrutacja</b></p>
