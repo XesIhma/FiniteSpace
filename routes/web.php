@@ -9,6 +9,7 @@ use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\ShipController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClanController;
+use App\Http\Controllers\WorkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,10 +47,14 @@ Route::middleware('auth')->group(function(){
     Route::get('/profile', [ProfileController::class, 'show']);
 
     Route::get('/ship', [ShipController::class, 'show']);
+    Route::get('/cargohold', [ShipController::class, 'cargoHold']);
+
     Route::get('/clan', [ClanController::class, 'show']);
     Route::get('/apply', [ClanController::class, 'apply']);
     Route::post('/apply', [ClanController::class, 'applicationForm']);
     Route::get('/accept_invitation', [ClanController::class, 'acceptInvitation']);
+
+    Route::get('/work', [WorkController::class, 'show']);
 
     Route::get('/ship_drive', function () {
         return view('ship_drive');

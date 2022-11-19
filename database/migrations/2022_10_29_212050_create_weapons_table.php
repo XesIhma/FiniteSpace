@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('power_max')->default('150');
             $table->integer('mass')->default('120');
             $table->integer('damage')->default('150');
-            $table->integer('ammo_type')->nullable();
+            $table->string('ammo_type')->nullable();
             $table->integer('ammo')->nullable();
             $table->integer('ammo_max')->nullable();
             $table->string('slot')->default('weapon');

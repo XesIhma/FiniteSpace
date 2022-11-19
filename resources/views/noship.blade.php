@@ -6,7 +6,7 @@
 
 @section('content')
 <div id="ship" class="panel">
-	<p class="bar"><b>@yield('ship_name')</b></p>
+	<p class="bar"><b>Frightener</b></p>
 	<div class="content, content_ship">
 		<div class="nav_box">
 			<nav>
@@ -16,7 +16,6 @@
 					<a href="nopage"><li>Osłony</li></a>
 					<a href="nopage"><li>Uzbrojenie</li></a>
 					<a href="nopage"><li>Układy</li></a>
-					<a href="cargohold"><li>Ładownia</li></a>
 				</ul>
 			</nav>
 		</div>

@@ -51,7 +51,7 @@ class ClanController extends Controller
             $rank = Rank::create([
                 'clan_id' => $clan->id,
                 'name' => 'Kadet',
-                'default_rank' => 1,
+                'default_rank' => 1
             ]);
             $rank = Rank::create([
                 'clan_id' => $clan->id,
@@ -81,6 +81,7 @@ class ClanController extends Controller
         if($clan->numberOfMembers() < $clan->members_limit){
             if($clan->apply === 2){
                 $clan->addUser($user);
+                return view('clan', ['clan' => $clan]);
             }
             elseif($clan->apply === 1){
                 return view('/apply', ['clan' => $clan]);

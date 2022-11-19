@@ -52,7 +52,7 @@
           <a href="shopping"><li>Zakupy</li></a>
           <a href="nopage"><li>Planeta</li></a>
           <a href="nopage"><li>Układ</li></a>
-          <a href="nopage"><li>Praca</li></a>
+          <a href="work"><li>Praca</li></a>
           <a href="nopage"><li>Walka</li></a>
           <a href="nopage"><li>Eventy</li></a>
           <a href="nopage"><li>Firma</li></a>

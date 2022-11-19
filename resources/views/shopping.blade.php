@@ -24,12 +24,32 @@
 							<div class="image" style="background-image: url(img/{{$position->image}})"></div>
 							<div class="info">
 								<h4 class="position_name">{{$position->model}}</h4>
-								@if($position->class)
-									<span>Typ: {{$position->class}}</span><br>
-								@endif
+								<span>Typ: {{$position->class}}</span><br>
 								<span>Masa: {{$position->mass}}</span><br>
-								<span>Wymiary: </span><br><span>{{$position->size}}</span><br>
+								<span>Wymiary: </span><span>{{$position->size}}</span><br>
+								<span>HP: </span><span>{{$position->hp_max}}</span><br>
+								@if($position->resistance)
+									<span>Odporność: {{$position->resistance}}</span><br>
+								@endif
+								@if($position->deuter_usage_max)
+									<span>Pobór paliwa: <span title="Wodór">{{$position->deuter_usage_max}}</span> / <span title="Tlen">{{$position->oxygen_usage_max}}</span></span><br>
+								@endif
+								@if($position->power_max)
+									<span>Moc: {{$position->power_max}}</span><br>
+								@endif
+								@if($position->thrust_max)
+									<span>Moc: {{$position->thrust_max}}</span><br>
+								@endif
+								@if($position->damage)
+									<span>Obrażenia: {{$position->damage}}</span><br>
+								@endif
+								@if($position->ammo_type)
+									<span>Rodzaj amunicji: {{$position->ammo_type}}</span><br>
+								@endif
+
+								
 								<span>Cena: {{$position->price}}</span><br>
+								
 							</div>
 						</div>
 						
