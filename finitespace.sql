@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 19 Lis 2022, 01:06
--- Wersja serwera: 10.4.24-MariaDB
--- Wersja PHP: 8.1.6
+-- Generation Time: Nov 20, 2022 at 09:47 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `finitespace`
+-- Database: `finitespace`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `applications`
+-- Table structure for table `applications`
 --
 
 CREATE TABLE `applications` (
@@ -38,7 +38,7 @@ CREATE TABLE `applications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `applications`
+-- Dumping data for table `applications`
 --
 
 INSERT INTO `applications` (`id`, `clan_id`, `user_id`, `application`, `status`, `created_at`, `updated_at`) VALUES
@@ -49,12 +49,13 @@ INSERT INTO `applications` (`id`, `clan_id`, `user_id`, `application`, `status`,
 (22, 15, 27, 'Los przeznaczył nas dla siebie. Chciałbym wstąpić w Wasze szeregi i walczyć pod Waszym sztandarem.', 1, '2022-11-14 12:06:54', '2022-11-14 12:07:08'),
 (24, 15, 27, 'asdkjsakd sd asd asd sad sa dsad as', 1, '2022-11-14 12:22:03', '2022-11-14 12:22:03'),
 (25, 15, 27, 'asdkjsakd sd asd asd sad sa dsad as', 1, '2022-11-14 12:22:03', '2022-11-14 12:22:03'),
-(26, 31, 30, 'Los przeznaczył nas dla siebie. Chciałbym wstąpić w Wasze szeregi i walczyć pod Waszym sztandarem.', 1, '2022-11-14 19:58:35', '2022-11-14 20:01:09');
+(26, 31, 30, 'Los przeznaczył nas dla siebie. Chciałbym wstąpić w Wasze szeregi i walczyć pod Waszym sztandarem.', 1, '2022-11-14 19:58:35', '2022-11-14 20:01:09'),
+(27, 15, 32, 'Los przeznaczył nas dla siebie. Chciałbym wstąpić w Wasze szeregi i walczyć pod Waszym sztandarem. x,dvsfkj .fjkbsfjk. sdjk zd;fjk chuj wam w dópe', 1, '2022-11-19 07:58:21', '2022-11-19 08:00:04');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `armors`
+-- Table structure for table `armors`
 --
 
 CREATE TABLE `armors` (
@@ -76,25 +77,26 @@ CREATE TABLE `armors` (
   `profile_id` bigint(20) UNSIGNED DEFAULT NULL,
   `ship_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `cargo_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `armors`
+-- Dumping data for table `armors`
 --
 
-INSERT INTO `armors` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `resistance`, `mass`, `slot`, `price`, `last_price`, `bought_at`, `profile_id`, `ship_id`, `created_at`, `updated_at`) VALUES
-(1, 'Pancerz żelazny', 'jednorodny pancerz', 'najbardziej podstawowe opancerzenie, chroniące głównie przed małymi asteroidami', '2m x 2m', 'armors/iron.jpg', 1, 50, 50, 10, 50, 'armor', 0, NULL, NULL, 1, NULL, NULL, NULL),
-(2, 'Pancerz stalowy', 'jednorodny pancerz', 'pancerz trochę mocniejszy niż żelazny', '2m x 2m', 'armors/steel.jpg', 1, 70, 70, 20, 45, 'armor', 100, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'ERA v4', 'pancerz reaktywny', 'pancerz wyposażony w wybuchowe płyty', '2m x 2m', 'armors/reactive.jpg', 1, 120, 120, 60, 70, 'armor', 120, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `armors` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `resistance`, `mass`, `slot`, `price`, `last_price`, `bought_at`, `profile_id`, `ship_id`, `created_at`, `updated_at`, `cargo_id`) VALUES
+(1, 'Pancerz żelazny', 'jednorodny pancerz', 'najbardziej podstawowe opancerzenie, chroniące głównie przed małymi asteroidami', '2m x 2m', 'armors/iron.jpg', 1, 50, 50, 10, 50, 'armor', 0, NULL, NULL, 8, NULL, NULL, NULL, 1),
+(2, 'Pancerz stalowy', 'jednorodny pancerz', 'pancerz trochę mocniejszy niż żelazny', '2m x 2m', 'armors/steel.jpg', 1, 70, 70, 20, 45, 'armor', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'ERA v4', 'pancerz reaktywny', 'pancerz wyposażony w wybuchowe płyty', '2m x 2m', 'armors/reactive.jpg', 1, 120, 120, 60, 70, 'armor', 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `cargo_holds`
+-- Table structure for table `cargos`
 --
 
-CREATE TABLE `cargo_holds` (
+CREATE TABLE `cargos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `voulme` int(11) NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'general',
@@ -104,10 +106,18 @@ CREATE TABLE `cargo_holds` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `cargos`
+--
+
+INSERT INTO `cargos` (`id`, `voulme`, `type`, `unloading_time`, `ship_id`, `created_at`, `updated_at`) VALUES
+(1, 100, 'general', 5, 1, NULL, NULL),
+(2, 300, 'ore', 15, 1, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `clans`
+-- Table structure for table `clans`
 --
 
 CREATE TABLE `clans` (
@@ -125,7 +135,7 @@ CREATE TABLE `clans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `clans`
+-- Dumping data for table `clans`
 --
 
 INSERT INTO `clans` (`id`, `name`, `tag`, `user_id`, `inner_text`, `outer_text`, `members_limit`, `money`, `apply`, `created_at`, `updated_at`) VALUES
@@ -136,7 +146,7 @@ INSERT INTO `clans` (`id`, `name`, `tag`, `user_id`, `inner_text`, `outer_text`,
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `engines`
+-- Table structure for table `engines`
 --
 
 CREATE TABLE `engines` (
@@ -165,21 +175,22 @@ CREATE TABLE `engines` (
   `profile_id` bigint(20) UNSIGNED DEFAULT NULL,
   `ship_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `cargo_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `engines`
+-- Dumping data for table `engines`
 --
 
-INSERT INTO `engines` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `deuter_usage`, `deuter_usage_max`, `oxygen_usage`, `oxygen_usage_max`, `power`, `power_max`, `mass`, `thrust`, `thrust_max`, `slot`, `price`, `last_price`, `bought_at`, `profile_id`, `ship_id`, `created_at`, `updated_at`) VALUES
-(1, 'Rocket engine', 'SIlnik rakietowy', 'Podstawowy silnik o napędzie chemicznym. Wytwarza ciąg spalając deuter w tlenie.', '2m x 2m x 2.5m', 'engines/engine1.jpg', 0, 200, 200, 0.000, 250.000, 0.000, 1000.000, 0, 10000, 1200, 0, 50000, 'engine', 2000, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Rocket v2', 'silnik rakietowy', 'Ulepszony silnik rakietowy, wyposażony w sprężarkę', '2m x 2m x 3m ', 'engines/engice_concept1.jpg', 0, 250, 300, 0.000, 300.000, 0.000, 1200.000, 0, 12000, 1300, 0, 70000, 'engine', 4000, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `engines` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `deuter_usage`, `deuter_usage_max`, `oxygen_usage`, `oxygen_usage_max`, `power`, `power_max`, `mass`, `thrust`, `thrust_max`, `slot`, `price`, `last_price`, `bought_at`, `profile_id`, `ship_id`, `created_at`, `updated_at`, `cargo_id`) VALUES
+(1, 'Rocket engine', 'SIlnik rakietowy', 'Podstawowy silnik o napędzie chemicznym. Wytwarza ciąg spalając deuter w tlenie.', '2m x 2m x 2.5m', 'engines/engine1.jpg', 0, 200, 200, 0.000, 250.000, 0.000, 1000.000, 0, 10000, 1200, 0, 50000, 'engine', 2000, NULL, NULL, 8, NULL, NULL, NULL, 1),
+(2, 'Rocket v2', 'silnik rakietowy', 'Ulepszony silnik rakietowy, wyposażony w sprężarkę', '2m x 2m x 3m ', 'engines/engice_concept1.jpg', 0, 250, 300, 0.000, 300.000, 0.000, 1200.000, 0, 12000, 1300, 0, 70000, 'engine', 4000, NULL, NULL, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -195,7 +206,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `invitations`
+-- Table structure for table `invitations`
 --
 
 CREATE TABLE `invitations` (
@@ -208,16 +219,43 @@ CREATE TABLE `invitations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `invitations`
+-- Dumping data for table `invitations`
 --
 
 INSERT INTO `invitations` (`id`, `clan_id`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 15, 26, 0, '2022-11-14 12:05:28', '2022-11-14 12:05:28');
+(1, 15, 26, 0, '2022-11-14 12:05:28', '2022-11-14 12:05:28'),
+(2, 15, 32, 1, '2022-11-19 07:57:35', '2022-11-19 07:57:55');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `migrations`
+-- Table structure for table `materials`
+--
+
+CREATE TABLE `materials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `count` int(11) NOT NULL DEFAULT 1,
+  `stack_size` int(11) NOT NULL DEFAULT 100,
+  `stack_mass` int(11) NOT NULL DEFAULT 100,
+  `cargo_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `materials`
+--
+
+INSERT INTO `materials` (`id`, `name`, `image`, `count`, `stack_size`, `stack_mass`, `cargo_id`, `created_at`, `updated_at`) VALUES
+(1, 'Ruda żelaza', '/materials/iron_ore.jpg', 100, 100, 787, 2, NULL, NULL),
+(2, 'Ruda żelaza', '/materials/iron_ore.jpg', 12, 100, 787, 2, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -227,7 +265,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -246,12 +284,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2022_11_11_122801_create_ranks_table', 2),
 (26, '2022_11_11_173344_add_rank_to_users', 2),
 (27, '2022_11_12_134356_create_invitations_table', 3),
-(29, '2022_11_17_132451_create_cargo_holds_table', 4);
+(30, '2022_11_17_132451_create_cargo_table', 4),
+(34, '2022_11_17_132451_create_cargos_table', 5),
+(35, '2022_11_17_133529_create_materials_table', 5),
+(36, '2022_11_19_110833_add_cargo_to_ships', 6),
+(37, '2022_11_19_110958_add_cargo_to_weapons', 6),
+(38, '2022_11_19_111021_add_cargo_to_armors', 6),
+(39, '2022_11_19_111036_add_cargo_to_engines', 6);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -263,7 +307,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -282,7 +326,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `profiles`
+-- Table structure for table `profiles`
 --
 
 CREATE TABLE `profiles` (
@@ -306,7 +350,7 @@ CREATE TABLE `profiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `profiles`
+-- Dumping data for table `profiles`
 --
 
 INSERT INTO `profiles` (`id`, `name`, `image`, `lvl`, `exp`, `money`, `strength`, `agility`, `speed`, `endurance`, `mechanics`, `building`, `informatics`, `navigation`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -318,12 +362,13 @@ INSERT INTO `profiles` (`id`, `name`, `image`, `lvl`, `exp`, `money`, `strength`
 (13, 'Rudolf', '/avatars/mechanic.jpg', 1, 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 27, '2022-11-14 12:06:43', '2022-11-14 12:06:43'),
 (14, 'Alice', '/avatars/girl.jpg', 1, 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 28, '2022-11-14 19:43:30', '2022-11-14 19:43:30'),
 (15, 'Alice', '/avatars/girl.jpg', 1, 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 29, '2022-11-14 19:47:46', '2022-11-14 19:47:46'),
-(16, 'Oskar', '/avatars/trader.jpg', 1, 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 30, '2022-11-14 19:56:00', '2022-11-14 19:56:00');
+(16, 'Oskar', '/avatars/trader.jpg', 1, 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 30, '2022-11-14 19:56:00', '2022-11-14 19:56:00'),
+(17, 'Oskar', '/avatars/trader.jpg', 1, 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 32, '2022-11-19 07:55:56', '2022-11-19 07:55:56');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ranks`
+-- Table structure for table `ranks`
 --
 
 CREATE TABLE `ranks` (
@@ -348,7 +393,7 @@ CREATE TABLE `ranks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ranks`
+-- Dumping data for table `ranks`
 --
 
 INSERT INTO `ranks` (`id`, `clan_id`, `name`, `accept_applications`, `send_invitations`, `remove_users`, `change_rank`, `modify_text`, `forum_moderator`, `base_expansion`, `fleet_construction`, `refueling`, `repair`, `using_factories`, `talker`, `default_rank`, `created_at`, `updated_at`) VALUES
@@ -362,7 +407,7 @@ INSERT INTO `ranks` (`id`, `clan_id`, `name`, `accept_applications`, `send_invit
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ships`
+-- Table structure for table `ships`
 --
 
 CREATE TABLE `ships` (
@@ -393,23 +438,24 @@ CREATE TABLE `ships` (
   `profile_id` bigint(20) UNSIGNED DEFAULT NULL,
   `clan_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `cargo_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ships`
+-- Dumping data for table `ships`
 --
 
-INSERT INTO `ships` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `deuter`, `deuter_max`, `deuter_usage`, `deuter_usage_max`, `oxygen_usage`, `oxygen_usage_max`, `power`, `power_max`, `mass`, `weapon_slots`, `engine_slots`, `armor_slots`, `price`, `last_price`, `bought_at`, `profile_id`, `clan_id`, `created_at`, `updated_at`) VALUES
-(1, 'Rouge', 'Lekki myśliwiec', 'Mały, jednoosobowy statek bojowy o ograniczonych możliwościach. ', '\'4m x 3m x 2m\'', 'ships/fighter1.jpg', 0, 1000, 1000, 0.000, 600.000, 0.000, 0.000, 10.000, 10.000, 0, 800, 3000, 2, 2, 10, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Nautilus', 'Krążownik', 'Średniej wielkości okręt. Ma sporą siłę ognia i solidne opancerzenie.', '30m x 8m x 6m', 'ships/cruiser.jpg', 0, 10950, 11000, 1500.000, 2500.000, 0.000, 0.000, 10.000, 10.000, 0, 2000, 33000, 6, 3, 30, 25000, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Viper', 'Ścigacz', 'Jeden z najszybszych statków w układzie, za to posiada niewielkie opancerzenie i tylko jedno działo.', '4m x 4m x 2m', 'ships/razorback.jpg', 0, 1500, 2000, 300.000, 300.000, 0.000, 0.000, 10.000, 10.000, 0, 400, 2000, 1, 1, 8, 0, NULL, NULL, 14, NULL, NULL, NULL),
-(4, 'Torus', 'stacja klanowa', 'Potężna modułowa konstrukcja', '13000000', 'ships/torus_station.jpg', 1, 11000, 25000, 0.000, 20000.000, 0.000, 0.000, 10.000, 10.000, 10000, 20000, 3000000, 20, 4, 200, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `ships` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `deuter`, `deuter_max`, `deuter_usage`, `deuter_usage_max`, `oxygen_usage`, `oxygen_usage_max`, `power`, `power_max`, `mass`, `weapon_slots`, `engine_slots`, `armor_slots`, `price`, `last_price`, `bought_at`, `profile_id`, `clan_id`, `created_at`, `updated_at`, `cargo_id`) VALUES
+(1, 'Rouge', 'Lekki myśliwiec', 'Mały, jednoosobowy statek bojowy o ograniczonych możliwościach. ', '\'4m x 3m x 2m\'', 'ships/fighter1.jpg', 0, 1000, 1000, 0.000, 600.000, 0.000, 0.000, 10.000, 10.000, 0, 800, 3000, 2, 2, 10, 0, NULL, NULL, 8, NULL, NULL, NULL, NULL),
+(2, 'Nautilus', 'Krążownik', 'Średniej wielkości okręt. Ma sporą siłę ognia i solidne opancerzenie.', '30m x 8m x 6m', 'ships/cruiser.jpg', 0, 10950, 11000, 1500.000, 2500.000, 0.000, 0.000, 10.000, 10.000, 0, 2000, 33000, 6, 3, 30, 25000, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Viper', 'Ścigacz', 'Jeden z najszybszych statków w układzie, za to posiada niewielkie opancerzenie i tylko jedno działo.', '4m x 4m x 2m', 'ships/razorback.jpg', 0, 1500, 2000, 300.000, 300.000, 0.000, 0.000, 10.000, 10.000, 0, 400, 2000, 1, 1, 8, 0, NULL, NULL, 14, NULL, NULL, NULL, 1),
+(4, 'Torus', 'stacja klanowa', 'Potężna modułowa konstrukcja', '13000000', 'ships/torus_station.jpg', 1, 11000, 25000, 0.000, 20000.000, 0.000, 0.000, 10.000, 10.000, 10000, 20000, 3000000, 20, 4, 200, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -428,7 +474,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `personal_text`, `premium`, `remember_token`, `created_at`, `updated_at`, `clan_id`, `rank_id`) VALUES
@@ -440,12 +486,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `pe
 (27, 'Erwin', 'asd@asd.as', NULL, '$2y$10$7VTsVjMeE1J7U0aj3LD46eSbTAO6xZbH9q9f0iiZQ9ofNReFkbXvW', '', 20, NULL, '2022-11-14 12:06:43', '2022-11-14 12:22:13', 15, 4),
 (28, 'dkaPOM', 'dka@test.com', NULL, '$2y$10$o7rIEDFAY3mFyw.Rhg7orOfBSPKJUei88KX2MubCwADeZ8UzLfc0G', '', 150, NULL, '2022-11-14 19:43:30', '2022-11-14 19:45:09', 31, 19),
 (29, 'first', 'first@test.com', NULL, '$2y$10$zTtX2QMtVyUz6gC2g.4J/e8Kg9ZlrY2g1JpeJjevhSomm1CmRvaV.', '', 20, NULL, '2022-11-14 19:47:46', '2022-11-14 19:54:44', 31, 18),
-(30, 'second', 'second@test.com', NULL, '$2y$10$W.JXWsyafRdV27LG6vpJqOZkRboXczee1.CWzt/vJgtD0AulDoiL.', '', 20, NULL, '2022-11-14 19:56:00', '2022-11-14 20:01:09', 31, 18);
+(30, 'second', 'second@test.com', NULL, '$2y$10$W.JXWsyafRdV27LG6vpJqOZkRboXczee1.CWzt/vJgtD0AulDoiL.', '', 20, NULL, '2022-11-14 19:56:00', '2022-11-14 20:01:09', 31, 18),
+(32, 'krzuchu', 'krzys@aaa.bb', NULL, '$2y$10$hTUp/Mvh0TwWvoMPpYy/wuPfVcb6Ijs.PcqPVKR06aiYrbw8TrDEm', '', 20, NULL, '2022-11-19 07:55:56', '2022-11-19 08:00:04', 15, 4);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `weapons`
+-- Table structure for table `weapons`
 --
 
 CREATE TABLE `weapons` (
@@ -474,46 +521,48 @@ CREATE TABLE `weapons` (
   `profile_id` bigint(20) UNSIGNED DEFAULT NULL,
   `ship_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `cargo_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `weapons`
+-- Dumping data for table `weapons`
 --
 
-INSERT INTO `weapons` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `deuter_usage`, `deuter_usage_max`, `power`, `power_max`, `mass`, `damage`, `ammo_type`, `ammo`, `ammo_max`, `slot`, `price`, `last_price`, `bought_at`, `profile_id`, `ship_id`, `created_at`, `updated_at`) VALUES
-(1, 'Laser Beam v1', 'broń laserowa', 'Wydajna i prosta broń. Zużywa dużo mocy, ale zadaje odpowiednio duże obrażenia.', '2m', 'weapons/laser_beam.jpg', 0, 50, 50, 0.000, 0.000, 0, 300000, 100, 100, NULL, NULL, NULL, 'weapon', 50, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Minigun 2000', 'gatling', 'Ten mały karabin potrafi narozrabiać, oddajac do 2000 strzałów na minutę.', '2.5m', 'weapons/minigun.png', 0, 150, 150, 0.000, 0.000, 0, 300, 150, 150, '7', 10000, 10000, 'weapon', 5000, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Działko jonowe', 'działo jonowe', 'To działo nadaje cząsteczkom potężną energię, a następnie wystrzeliwuje je w kierunku wrogiego statku.', '1m x 1m x 2m', 'weapons/ion_gun.png', 0, 200, 250, 0.000, 10.000, 0, 50000, 300, 300, NULL, NULL, NULL, 'weapon', 7000, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Plasma Caster', 'wyrzutnia plazmy', 'Ta potężna broń wytwarza materię podobną jak na słońcu, a następnie niszczy nią wrogie statki.', '4m x 3m x 2m', 'weapons/plasma_caster.png', 0, 800, 800, 0.000, 100.000, 0, 500000, 2000, 800, NULL, NULL, NULL, 'weapon', 11000, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `weapons` (`id`, `model`, `class`, `description`, `size`, `image`, `status`, `hp`, `hp_max`, `deuter_usage`, `deuter_usage_max`, `power`, `power_max`, `mass`, `damage`, `ammo_type`, `ammo`, `ammo_max`, `slot`, `price`, `last_price`, `bought_at`, `profile_id`, `ship_id`, `created_at`, `updated_at`, `cargo_id`) VALUES
+(1, 'Laser Beam v1', 'broń laserowa', 'Wydajna i prosta broń. Zużywa dużo mocy, ale zadaje odpowiednio duże obrażenia.', '2m', 'weapons/laser_beam.jpg', 0, 50, 50, 0.000, 0.000, 0, 300000, 100, 100, NULL, NULL, NULL, 'weapon', 50, NULL, NULL, 8, NULL, NULL, NULL, 1),
+(2, 'Minigun 2000', 'gatling', 'Ten mały karabin potrafi narozrabiać, oddajac do 2000 strzałów na minutę.', '2.5m', 'weapons/minigun.png', 0, 150, 150, 0.000, 0.000, 0, 300, 150, 150, '7', 10000, 10000, 'weapon', 5000, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, 'Działko jonowe', 'działo jonowe', 'To działo nadaje cząsteczkom potężną energię, a następnie wystrzeliwuje je w kierunku wrogiego statku.', '1m x 1m x 2m', 'weapons/ion_gun.png', 0, 200, 250, 0.000, 10.000, 0, 50000, 300, 300, NULL, NULL, NULL, 'weapon', 7000, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(4, 'Plasma Caster', 'wyrzutnia plazmy', 'Ta potężna broń wytwarza materię podobną jak na słońcu, a następnie niszczy nią wrogie statki.', '4m x 3m x 2m', 'weapons/plasma_caster.png', 0, 800, 800, 0.000, 100.000, 0, 500000, 2000, 800, NULL, NULL, NULL, 'weapon', 11000, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `applications`
+-- Indexes for table `applications`
 --
 ALTER TABLE `applications`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `armors`
+-- Indexes for table `armors`
 --
 ALTER TABLE `armors`
   ADD PRIMARY KEY (`id`),
   ADD KEY `armors_profile_id_foreign` (`profile_id`),
-  ADD KEY `armors_ship_id_foreign` (`ship_id`);
+  ADD KEY `armors_ship_id_foreign` (`ship_id`),
+  ADD KEY `armors_cargo_id_foreign` (`cargo_id`);
 
 --
--- Indeksy dla tabeli `cargo_holds`
+-- Indexes for table `cargos`
 --
-ALTER TABLE `cargo_holds`
+ALTER TABLE `cargos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `cargo_holds_ship_id_foreign` (`ship_id`);
+  ADD KEY `cargos_ship_id_foreign` (`ship_id`);
 
 --
--- Indeksy dla tabeli `clans`
+-- Indexes for table `clans`
 --
 ALTER TABLE `clans`
   ADD PRIMARY KEY (`id`),
@@ -522,22 +571,23 @@ ALTER TABLE `clans`
   ADD KEY `clans_user_id_foreign` (`user_id`);
 
 --
--- Indeksy dla tabeli `engines`
+-- Indexes for table `engines`
 --
 ALTER TABLE `engines`
   ADD PRIMARY KEY (`id`),
   ADD KEY `engines_profile_id_foreign` (`profile_id`),
-  ADD KEY `engines_ship_id_foreign` (`ship_id`);
+  ADD KEY `engines_ship_id_foreign` (`ship_id`),
+  ADD KEY `engines_cargo_id_foreign` (`cargo_id`);
 
 --
--- Indeksy dla tabeli `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeksy dla tabeli `invitations`
+-- Indexes for table `invitations`
 --
 ALTER TABLE `invitations`
   ADD PRIMARY KEY (`id`),
@@ -545,19 +595,26 @@ ALTER TABLE `invitations`
   ADD KEY `invitations_user_id_foreign` (`user_id`);
 
 --
--- Indeksy dla tabeli `migrations`
+-- Indexes for table `materials`
+--
+ALTER TABLE `materials`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `materials_cargo_id_foreign` (`cargo_id`);
+
+--
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeksy dla tabeli `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -565,29 +622,30 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeksy dla tabeli `profiles`
+-- Indexes for table `profiles`
 --
 ALTER TABLE `profiles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `profiles_user_id_foreign` (`user_id`);
 
 --
--- Indeksy dla tabeli `ranks`
+-- Indexes for table `ranks`
 --
 ALTER TABLE `ranks`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ranks_clan_id_foreign` (`clan_id`);
 
 --
--- Indeksy dla tabeli `ships`
+-- Indexes for table `ships`
 --
 ALTER TABLE `ships`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ships_profile_id_foreign` (`profile_id`),
-  ADD KEY `ships_clan_id_foreign` (`clan_id`);
+  ADD KEY `ships_clan_id_foreign` (`clan_id`),
+  ADD KEY `ships_cargo_id_foreign` (`cargo_id`);
 
 --
--- Indeksy dla tabeli `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -597,170 +655,147 @@ ALTER TABLE `users`
   ADD KEY `users_rank_id_foreign` (`rank_id`);
 
 --
--- Indeksy dla tabeli `weapons`
+-- Indexes for table `weapons`
 --
 ALTER TABLE `weapons`
   ADD PRIMARY KEY (`id`),
   ADD KEY `weapons_profile_id_foreign` (`profile_id`),
-  ADD KEY `weapons_ship_id_foreign` (`ship_id`);
+  ADD KEY `weapons_ship_id_foreign` (`ship_id`),
+  ADD KEY `weapons_cargo_id_foreign` (`cargo_id`);
 
 --
--- AUTO_INCREMENT dla zrzuconych tabel
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT dla tabeli `applications`
+-- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT dla tabeli `armors`
+-- AUTO_INCREMENT for table `armors`
 --
 ALTER TABLE `armors`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT dla tabeli `cargo_holds`
+-- AUTO_INCREMENT for table `cargos`
 --
-ALTER TABLE `cargo_holds`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `cargos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `clans`
+-- AUTO_INCREMENT for table `clans`
 --
 ALTER TABLE `clans`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT dla tabeli `engines`
+-- AUTO_INCREMENT for table `engines`
 --
 ALTER TABLE `engines`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `invitations`
+-- AUTO_INCREMENT for table `invitations`
 --
 ALTER TABLE `invitations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `migrations`
+-- AUTO_INCREMENT for table `materials`
+--
+ALTER TABLE `materials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT dla tabeli `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `profiles`
+-- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT dla tabeli `ranks`
+-- AUTO_INCREMENT for table `ranks`
 --
 ALTER TABLE `ranks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT dla tabeli `ships`
+-- AUTO_INCREMENT for table `ships`
 --
 ALTER TABLE `ships`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT dla tabeli `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT dla tabeli `weapons`
+-- AUTO_INCREMENT for table `weapons`
 --
 ALTER TABLE `weapons`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Ograniczenia dla zrzutów tabel
+-- Constraints for dumped tables
 --
 
 --
--- Ograniczenia dla tabeli `armors`
+-- Constraints for table `armors`
 --
 ALTER TABLE `armors`
-  ADD CONSTRAINT `armors_profile_id_foreign` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`),
-  ADD CONSTRAINT `armors_ship_id_foreign` FOREIGN KEY (`ship_id`) REFERENCES `ships` (`id`);
+  ADD CONSTRAINT `armors_cargo_id_foreign` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`);
 
 --
--- Ograniczenia dla tabeli `cargo_holds`
+-- Constraints for table `cargos`
 --
-ALTER TABLE `cargo_holds`
-  ADD CONSTRAINT `cargo_holds_ship_id_foreign` FOREIGN KEY (`ship_id`) REFERENCES `ships` (`id`);
+ALTER TABLE `cargos`
+  ADD CONSTRAINT `cargos_ship_id_foreign` FOREIGN KEY (`ship_id`) REFERENCES `ships` (`id`);
 
 --
--- Ograniczenia dla tabeli `clans`
---
-ALTER TABLE `clans`
-  ADD CONSTRAINT `clans_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Ograniczenia dla tabeli `engines`
+-- Constraints for table `engines`
 --
 ALTER TABLE `engines`
-  ADD CONSTRAINT `engines_profile_id_foreign` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`),
-  ADD CONSTRAINT `engines_ship_id_foreign` FOREIGN KEY (`ship_id`) REFERENCES `ships` (`id`);
+  ADD CONSTRAINT `engines_cargo_id_foreign` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`);
 
 --
--- Ograniczenia dla tabeli `invitations`
+-- Constraints for table `materials`
 --
-ALTER TABLE `invitations`
-  ADD CONSTRAINT `invitations_clan_id_foreign` FOREIGN KEY (`clan_id`) REFERENCES `clans` (`id`),
-  ADD CONSTRAINT `invitations_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `materials`
+  ADD CONSTRAINT `materials_cargo_id_foreign` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`);
 
 --
--- Ograniczenia dla tabeli `profiles`
---
-ALTER TABLE `profiles`
-  ADD CONSTRAINT `profiles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Ograniczenia dla tabeli `ranks`
---
-ALTER TABLE `ranks`
-  ADD CONSTRAINT `ranks_clan_id_foreign` FOREIGN KEY (`clan_id`) REFERENCES `clans` (`id`);
-
---
--- Ograniczenia dla tabeli `ships`
+-- Constraints for table `ships`
 --
 ALTER TABLE `ships`
-  ADD CONSTRAINT `ships_clan_id_foreign` FOREIGN KEY (`clan_id`) REFERENCES `clans` (`id`),
-  ADD CONSTRAINT `ships_profile_id_foreign` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`);
+  ADD CONSTRAINT `ships_cargo_id_foreign` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`);
 
 --
--- Ograniczenia dla tabeli `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_clan_id_foreign` FOREIGN KEY (`clan_id`) REFERENCES `clans` (`id`),
-  ADD CONSTRAINT `users_rank_id_foreign` FOREIGN KEY (`rank_id`) REFERENCES `ranks` (`id`);
-
---
--- Ograniczenia dla tabeli `weapons`
+-- Constraints for table `weapons`
 --
 ALTER TABLE `weapons`
-  ADD CONSTRAINT `weapons_profile_id_foreign` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`),
-  ADD CONSTRAINT `weapons_ship_id_foreign` FOREIGN KEY (`ship_id`) REFERENCES `ships` (`id`);
+  ADD CONSTRAINT `weapons_cargo_id_foreign` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
