@@ -4,10 +4,12 @@
 }
 #ship .content_ship{
   padding: 0px;
-  
 }
 .content_ship{
   overflow: hidden;
+}
+.main_ship{
+  margin: 15px 0 15px 15px;
 }
 #ship .content_ship > *{
   float:left;
@@ -24,7 +26,6 @@
   height: 235px;
   background-size: cover;
   background-position: center;
-  margin: 15px 0 15px 15px;
   border: 1px solid;
 }
 #ship .info_box, #ship .stat_box{
@@ -71,4 +72,13 @@
 .meter_value{
   height: 3px;
   background-color: green;
+}
+table.cargo td{
+  width:100px;
+  height:100px;
+  margin: 0 5px 5px 0;
+  border: 1px solid #C1C2C2;
+  background-size: cover;
+  background-position: center;
+  color:black;
 }

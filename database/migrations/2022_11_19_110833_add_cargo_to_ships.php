@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cargo_holds', function (Blueprint $table) {
-            $table->id();
-            $table->integer('voulme');
-            $table->string('type')->default('general');
-            $table->integer('unloading_time')->default('5');
-            $table->foreignId('ship_id')->constrained();
-            $table->timestamps();
+        Schema::table('ships', function (Blueprint $table) {
+            $table->foreignId('cargo_id')->nullable()->constrained();
         });
     }
 
@@ -30,6 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargo_holds');
+        Schema::table('ships', function (Blueprint $table) {
+            $table->dropForeign(['cargo_id']);
+            $table->dropColumn('cargo_id');
+        });
     }
 };

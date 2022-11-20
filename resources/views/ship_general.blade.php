@@ -5,7 +5,8 @@
 
 
 @section('content_ship')
-
+<div class="ship_image" style="background-image: url(@yield('ship_image'));">
+</div>
 <div class="info_box">
   <label for="meter_hp"><b>Stan:</b> {{$ship->hp}}/{{$ship->hp_max}}<br></label>
   <meter id="meter_hp" value="{{$ship->hp}}" max="{{$ship->hp_max}}"></meter><br>

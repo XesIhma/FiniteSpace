@@ -1,9 +1,8 @@
 @extends('ship')
 
-@section('ship_image', 'img/fighter2.jpg')
-
 @section('content_ship')
-        
+<div class="ship_image" style="background-image: url('ship_image');">
+</div>
 <div class="eq_box">
   <div class="eq_item">
     <div class="eq_img" style="background-image: url(img/engine1.jpg)">

@@ -20,9 +20,11 @@
 				</ul>
 			</nav>
 		</div>
-		<div class="ship_image" style="background-image: url(@yield('ship_image'));">
-		</div>
+		<div class="main_ship">
+		
 		@yield('content_ship')
+
+		</div>
 
 	</div>
 </div>

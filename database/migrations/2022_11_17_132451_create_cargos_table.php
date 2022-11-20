@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materials', function (Blueprint $table) {
+        Schema::create('cargos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('count')->default('1');
-            $table->integer('stack_size')->default('100');
-            $table->integer('stack_mass')->default('100');
-            $table->foreignId('cargo_id')->constrained();
+            $table->integer('voulme');
+            $table->string('type')->default('general');
+            $table->integer('unloading_time')->default('5');
+            $table->foreignId('ship_id')->constrained();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materials');
+        Schema::dropIfExists('cargos');
     }
 };
