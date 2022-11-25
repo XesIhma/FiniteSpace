@@ -17,4 +17,9 @@ class Profile extends Model
     public function expMax(){
         return $this->lvl()*30;
     }
+
+    public function sameLocation($other){
+        
+        return true;
+    }
 }

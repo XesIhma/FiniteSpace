@@ -37,7 +37,14 @@
 #ship .info_box meter#meter_gen, #ship .info_box meter#meter_aku{
   width:120px;
 }
-
+.main_ship{
+  width: calc(100% - 175px)
+}
+.main_ship > *{
+  float: left;
+  width: auto;
+  height: 337px;
+}
 .content_ship .eq_box{
   margin: 15px 15px 0 15px;
 }
@@ -73,6 +80,36 @@
   height: 3px;
   background-color: green;
 }
+div.cargo_item .position{
+  display: none;
+  border: 1px solid #C1C2C2;
+  height: 333px;
+}
+div.position  .image{
+  width: 55%;
+  width: 200px;
+  height: 159px;
+  background-size: cover;
+  background-position: center;
+}
+div.position  .info{
+  padding:5px;
+}
+table.cargo{
+  margin: 0 15px 15px 0;
+  margin-top: -2px;
+  margin-left: -2px;
+}
+div.cargo_item{
+  float:left;
+  height: 333px;
+}
+table.cargo th{
+  background-image: url(/../img/light_background.png);
+  border: 1px solid #C1C2C2;
+  text-align: left;
+  padding: 5px 0px 5px 5px;
+}
 table.cargo td{
   width:100px;
   height:100px;
@@ -80,5 +117,4 @@ table.cargo td{
   border: 1px solid #C1C2C2;
   background-size: cover;
   background-position: center;
-  color:black;
 }

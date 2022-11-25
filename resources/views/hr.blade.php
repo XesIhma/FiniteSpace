@@ -45,7 +45,7 @@
             <form action="invite">
               <input type="text" name="login"><br><br>
               <input type="submit" value="Zaproś">
-            </orm>
+            </form>
           </div>
         </div>
       </div>
@@ -70,6 +70,7 @@
               </tr>
               
               @endforeach
+              
             </table>
           </div>
         </div>

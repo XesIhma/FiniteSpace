@@ -41,4 +41,10 @@ $(document).ready(function(){
 																 // scroll position and the element is hidden
 	}
 }).scroll();
+
+$(document).on("click",".td_item", function(){
+	$(".position").hide();
+	$("div#"+$(this).attr("data-showid")).show();
+});
+
 });

@@ -1,6 +1,6 @@
 @extends('ship')
 
-@section('ship_name', "$ship->model")
+@section('ship_name', "$ship->name")
 @section('ship_image', "img/$ship->image")
 
 
@@ -19,7 +19,7 @@
 <div class="stat_box">
   <div class="stat1_box">
     <b>Parametry:</b><br>
-    <span>Klasa: </span><span id="class">{{$ship->class}}</span><br>
+    <span>Klasa: </span><span id="class">{{$ship->type}}</span><br>
     <span>Masa: </span><span id="weight">{{$ship->mass/1000}}t</span><br>
     <span>Wymiary: </span><span id="dimensions">{{$ship->size}}</span><br>
     <span>Siła ciągu: </span><span id="thrust">1100kN</span><br>

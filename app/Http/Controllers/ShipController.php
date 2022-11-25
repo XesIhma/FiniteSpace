@@ -20,7 +20,9 @@ class ShipController extends Controller
     function cargoHold(){
         $ship = Ship::where('profile_id',  auth()->user()->profiles()[0]->id)->first();
         $cargoHolds = Cargo::where('ship_id',  $ship->id)->get();
-        if($cargoHolds) return view('cargohold', ['ship' => $ship, 'cargoHolds' => $cargoHolds]);
+
+        if($cargoHolds) return view('cargohold', compact('ship', 'cargoHolds'));
+
         return view('ship_general', ['ship' => $ship])->with('error', "Nie masz dostępu do ładowni");
 
     }

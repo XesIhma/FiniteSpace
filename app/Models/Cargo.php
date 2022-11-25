@@ -23,7 +23,6 @@ class Cargo extends Model
         $items = $items->concat($engines);
         $items = $items->concat($armors);
         $items = $items->concat($materials);
-
         
         return($items);
     }

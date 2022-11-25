@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function(){
     });
 
     Route::get('/shopping', [ShoppingController::class, 'show']);
+    Route::get('/purchase', [ShoppingController::class, 'purchase']);
 
     Route::get('/account', function () {
         return view('account');

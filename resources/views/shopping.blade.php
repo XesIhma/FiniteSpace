@@ -21,36 +21,56 @@
 						@foreach ($category[1] as $position)
 
 						<div class="position">
-							<div class="image" style="background-image: url(img/{{$position->image}})"></div>
-							<div class="info">
-								<h4 class="position_name">{{$position->model}}</h4>
-								<span>Typ: {{$position->class}}</span><br>
-								<span>Masa: {{$position->mass}}</span><br>
-								<span>Wymiary: </span><span>{{$position->size}}</span><br>
-								<span>HP: </span><span>{{$position->hp_max}}</span><br>
-								@if($position->resistance)
-									<span>Odporność: {{$position->resistance}}</span><br>
-								@endif
-								@if($position->deuter_usage_max)
-									<span>Pobór paliwa: <span title="Wodór">{{$position->deuter_usage_max}}</span> / <span title="Tlen">{{$position->oxygen_usage_max}}</span></span><br>
-								@endif
-								@if($position->power_max)
-									<span>Moc: {{$position->power_max}}</span><br>
-								@endif
-								@if($position->thrust_max)
-									<span>Moc: {{$position->thrust_max}}</span><br>
-								@endif
-								@if($position->damage)
-									<span>Obrażenia: {{$position->damage}}</span><br>
-								@endif
-								@if($position->ammo_type)
-									<span>Rodzaj amunicji: {{$position->ammo_type}}</span><br>
-								@endif
-
+							<div class="top">
+								<div class="image" style="background-image: url(img/{{$position->image}})"></div>
+								<div class="info">
+									<h4 class="position_name">{{$position->name}}</h4><br>
+									<span>Typ: {{$position->type}}</span><br>
+									<span>Masa: {{$position->mass}}</span><br>
+									<span>Wymiary: </span><span>{{$position->size}}</span><br>
+									<span>HP: </span><span>{{$position->hp_max}}</span><br>
+									@if($position->resistance)
+										<span>Odporność: {{$position->resistance}}</span><br>
+									@endif
+									@if($position->deuter_usage_max)
+										<span>Pobór paliwa: <span title="Wodór">{{$position->deuter_usage_max}}</span> / <span title="Tlen">{{$position->oxygen_usage_max}}</span></span><br>
+									@endif
+									@if($position->power_max)
+										<span>Moc: {{$position->power_max}}</span><br>
+									@endif
+									@if($position->thrust_max)
+										<span>Moc: {{$position->thrust_max}}</span><br>
+									@endif
+									@if($position->damage)
+										<span>Obrażenia: {{$position->damage}}</span><br>
+									@endif
+									@if($position->ammo_type)
+										<span>Rodzaj amunicji: {{$position->ammo_type}}</span><br>
+									@endif
+								</div>
+							</div>
+							<div class="bottom">
+								<div class="description">
+									Opis: {{$position->description}}
+							</div>
 								
-								<span>Cena: {{$position->price}}</span><br>
+								<div class="buy">
+									<div>
+										@if($position->owner())
+											<p>Sprzedający: {{$position->owner()->name}}</p>
+										@endif
+										<p>Cena: {{$position->price}}</p>
+										@if (auth()->user()->profiles()[0]->money >= $position->price)
+											<a href="purchase?category={{$category[0]}}&item_id={{$position->id}}" class="active">KUP</a>
+										@else
+											<a href="#" class="inactive">KUP</a>
+										@endif
+									</div>
+								</div>
+									
 								
 							</div>
+							
 						</div>
 						
 						@endforeach
@@ -66,45 +86,11 @@
 			
 	</div>
 </div>
-<div id="other_ships" class="panel">
-	<p class="bar"><b>Pozostałe statki</b></p>
+<div class="panel">
+	<p class="bar"><b>Twoje zakupy</b></p>
 	<div class="content">
 
-		<div class="position">
-			<div class="image" style="background-image: url(img/fighter1.jpg)"></div>
-			<div class="info">
-				<h4 class="position_name">Hurricane</h4>
-				<span>Lekki myśliwiec</span><br>
-				<span>Masa: 13t</span><br>
-				<span>Wymiary: </span><br><span>10m x 7m x 3m</span><br>
-				<span>Siła ciągu: 1100kN</span><br>
-				<span>Max v2: 5km/s</span><br>
-			</div>
-		</div>
-
-		<div class="position">
-			<div class="image" style="background-image: url(img/laser_beam.jpg)"></div>
-			<div class="info">
-				<h4 class="position_name">Laser Beam v1</h4>
-				<span>Masa: 100kg</span><br>
-				<span>Pobór mocy: 300</span><br>
-				<span>Obrażenia: 100</span><br>
-				<span>Cena: 8000</span><br>
-				<span>Slot: A</span><br>
-			</div>
-		</div>
-
-		<div class="position">
-			<div class="image" style="background-image: url(img/plasma_caster.png)"></div>
-			<div class="info">
-				<h4 class="position_name">Plasma Caster</h4>
-				<span>Masa: 100kg</span><br>
-				<span>Pobór mocy: 300</span><br>
-				<span>Obrażenia: 100</span><br>
-				<span>Cena: 8000</span><br>
-				<span>Slot: A</span><br>
-			</div>
-		</div>
+		
 	</div>
 </div>
       @endsection

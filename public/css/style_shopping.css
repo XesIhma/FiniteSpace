@@ -45,23 +45,70 @@
   display: inline-block;
   vertical-align: top;
 }
-.position > .image{
-  width: 55%;
+.position .top, .position.bottom{
+  position: relative;
+}
+.position .top{
   height: 159px;
+}
+.position .bottom{
+  height: 101px;
+}
+.position .image{
+  height: 100%;
+  width: 55%;
   background-size: cover;
   background-position: center;
   float: left;
 }
-.position > .info{
+.position .info{
   max-width: 45%;
   padding: 5px;
   float: left;
 }
+.position .description{
+  padding: 5px;
+  white-space:normal;
+  width: 55%;
+  float: left;
+}
+.position .buy{
+  width: 45%;
+  height: 100%;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../img/basic_background.png);
+}
+.position .buy div{
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.position .buy p, .position .buy a{
+  margin:3px;
+}
 .position:last-child{
   margin-right: 0;
 }
-.position_name_e{
-  position: absolute;
+.position_name{
   bottom:24px;
   left: 24px;
+}
+.position a{
+  background-image: url(../img/light_background.png);
+  border: 1px solid #C1C2C2;
+  padding: 5px;
+  display: block;
+}
+.position a.active:hover{
+  background-image: url(/../img/hover_background.png);
+  color:white;
+}
+.position a.inactive{
+  color:grey;
 }

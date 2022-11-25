@@ -15,7 +15,7 @@
   @foreach($weapons as $weapon)
     <tr>
       <td>{{$weapon['id']}}</td>
-      <td>{{$weapon['model']}}</td>
+      <td>{{$weapon['name']}}</td>
       <td>{{$weapon['hp_max']}}</td>
       <td>{{$weapon['mass']}}</td>
       <td>{{$weapon['damage']}}</td>

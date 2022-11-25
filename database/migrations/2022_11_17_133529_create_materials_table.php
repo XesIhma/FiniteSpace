@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('count')->default('1');
             $table->integer('stack_size')->default('100');
-            $table->integer('stack_mass')->default('100');
+            $table->integer('mass')->default('100'); //stack_mass
             $table->foreignId('cargo_id')->constrained();
             $table->timestamps();
         });
