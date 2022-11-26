@@ -7,6 +7,7 @@ use App\Models\Weapon;
 use App\Models\Armor;
 use App\Models\Engine;
 use App\Models\Ship;
+use App\Models\Bought;
 
 class ShoppingController extends Controller
 {
@@ -17,10 +18,10 @@ class ShoppingController extends Controller
         $data[1] = ["Bronie", Weapon::where('price', '>', 0)->get()];
         $data[2] = ["Pancerze", Armor::where('price', '>', 0)->get()];
         $data[3] = ["Silniki", Engine::where('price', '>', 0)->get()];
+
+        $boughts = Bought::where('profile_id', auth()->user()->profiles()[0]->id)->get();
         
-
-
-        return view('shopping', ['categories'=>$data]);
+        return view('shopping', ['categories'=>$data, 'boughts'=>$boughts]);
     }
     function purchase(Request $request){
         $item_id = $request->input('item_id');
@@ -58,6 +59,16 @@ class ShoppingController extends Controller
                 $item->last_price = $price;
                 $item->price = 0;
                 $item->save();
+                $bought = Bought::create([
+                    'profile_id' => $buyer->id,
+                    'seller_id' => $seller->id,
+                    'item_id' => $item->id,
+                    'category' => $request->input('category'),
+                    'name' => $item->name,
+                    'image' => $item->image,
+                    'price' => $price
+
+                ]);
                 return back()->with('success', "Udało Ci się zakupić ten przedmiot za $price UDP");
             }
             return back()->with('error', 'Nie masz wystarczająco pieniędzy');

@@ -21,7 +21,7 @@
         <tr>
         @for ($j = 0; $j < 5; $j++)
           @if (isset($items[$i*5 + $j]))
-          <td class="td_item" style="background-image: url(img/{{$items[$i*5 + $j]->image}})" title="{{$items[$i*5 + $j]->name}}" data-showid="{{$cargo->type}}{{$i*5 + $j}}"></td>
+          <td class="td_item" style="background-image: url(img/{{$items[$i*5 + $j]->image}}_thumbnail.jpg)" title="{{$items[$i*5 + $j]->name}}" data-showid="{{$cargo->type}}{{$i*5 + $j}}"></td>
           @else
           <td></td>
           @endif

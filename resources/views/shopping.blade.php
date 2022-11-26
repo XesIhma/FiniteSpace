@@ -86,10 +86,29 @@
 			
 	</div>
 </div>
-<div class="panel">
+<div id="bought" class="panel">
 	<p class="bar"><b>Twoje zakupy</b></p>
 	<div class="content">
-
+		@foreach($boughts as $position)
+		<div class="position">
+			<div class="image" style="background-image: url(img/{{$position->image}})"></div>
+			<div class="info">
+				<div>
+					<h4 class="position_name">{{$position->name}}</h4>
+					<span>Kupiono od: {{$position->seller_id}}</span><br>
+					<span>Cena: {{$position->price}}</span><br><br>
+					@if(!$position->is_taken)
+						<a href="take?category={{$category[0]}}&item_id={{$position->id}}" class="active">ODBIERZ</a>
+					@else
+						<a href="#" class="inactive">ODEBRANO</a>
+					@endif
+				</div>
+				
+				</div>
+			</div>
+							
+		</div>
+		@endforeach
 		
 	</div>
 </div>
