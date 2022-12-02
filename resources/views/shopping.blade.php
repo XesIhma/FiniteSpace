@@ -95,7 +95,8 @@
 			<div class="info">
 				<div>
 					<h4 class="position_name">{{$position->name}}</h4>
-					<span>Kupiono od: {{$position->seller_id}}</span><br>
+					<span>{{ $position->created_at->format('d.m.Y') }}</span><br>
+					<span>Kupiono od: {{getProfileName($position->seller_id)}}</span><br>
 					<span>Cena: {{$position->price}}</span><br><br>
 					@if(!$position->is_taken)
 						<a href="take?category={{$category[0]}}&item_id={{$position->id}}" class="active">ODBIERZ</a>

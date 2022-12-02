@@ -1,5 +1,7 @@
 @extends('ship')
 
+@section('ship_name', "$ship->name")
+
 @section('content_ship')
 <div class="ship_image" style="background-image: url('ship_image');">
 </div>

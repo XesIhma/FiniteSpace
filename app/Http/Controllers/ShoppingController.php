@@ -24,21 +24,8 @@ class ShoppingController extends Controller
         return view('shopping', ['categories'=>$data, 'boughts'=>$boughts]);
     }
     function purchase(Request $request){
-        $item_id = $request->input('item_id');
-        switch($request->input('category')){
-            case "Statki": 
-                $item = Ship::where('id', $item_id)->first();
-                break;
-            case "Bronie": 
-                $item = Weapon::where('id', $item_id)->first();
-                break;
-            case "Pancerze": 
-                $item = Armor::where('id', $item_id)->first();
-                break;
-            case "Silniki": 
-                $item = Engine::where('id', $item_id)->first();
-                break;
-        }
+
+        $item = findItem($request->input('category'), $request->input('item_id'));
 
         if($item){
             $seller = $item->owner();
@@ -75,8 +62,10 @@ class ShoppingController extends Controller
             
         }
         return back()->with('error', 'Coś poszło nie tak');
+    }
 
-
-
+    function take(Request $request){
+        $item = findItem($request->input('category'), $request->input('item_id'));
+        dd($item);
     }
 }

@@ -114,10 +114,15 @@
   color:grey;
 }
 
+#bought{
+  height:316px;
+}
 #bought .position{
   width: 210px;
-  height:280px;
+  height:290px;
   position: relative;
+  float: left;
+  margin-right: 32px;
 }
 
 #bought div.image{
@@ -129,6 +134,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(../img/basic_background.png);
-
 }
