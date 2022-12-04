@@ -9,10 +9,12 @@ use App\Models\Ship;
 
 
 if(!function_exists('getProfileName')){
+
   function getProfileName($id){
     $profile = Profile::where('id', $id)->first();
     return $profile->name;
   }
+
 }
 
 if(!function_exists('findItem')){
@@ -35,4 +37,23 @@ if(!function_exists('findItem')){
     return $item;
   }
 
+}
+
+if(!function_exists('currentProfile')){
+
+  function currentProfile(){
+    //TODO
+    return auth()->user()->profiles()[0];
+  }
+}
+
+if(!function_exists('currentShip')){
+
+  function currentShip(){
+    $profile = currentProfile();
+    //TODO
+    $ship = Ship::where('profile_id', $profile->id)->first();
+
+    return $ship;
+  }
 }

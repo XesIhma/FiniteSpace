@@ -60,7 +60,7 @@
 											<p>Sprzedający: {{$position->owner()->name}}</p>
 										@endif
 										<p>Cena: {{$position->price}}</p>
-										@if (auth()->user()->profiles()[0]->money >= $position->price)
+										@if (currentProfile()->money >= $position->price)
 											<a href="purchase?category={{$category[0]}}&item_id={{$position->id}}" class="active">KUP</a>
 										@else
 											<a href="#" class="inactive">KUP</a>

@@ -8,6 +8,7 @@ use App\Models\Armor;
 use App\Models\Engine;
 use App\Models\Ship;
 use App\Models\Bought;
+use App\Models\Cargo;
 
 class ShoppingController extends Controller
 {
@@ -66,6 +67,19 @@ class ShoppingController extends Controller
 
     function take(Request $request){
         $item = findItem($request->input('category'), $request->input('item_id'));
-        dd($item);
+        if($item){
+            $ship = currentShip();
+            $cargo = Cargo::where([
+                ['ship_id', '=', $ship->id],
+                ['type', '=', 'general']
+            ])->first();
+            if($cargo){
+                $item->cargo_id = $cargo->id;
+                $item->save();
+                return back()->with('success', "Udało Ci się odebrać ten przedmiot");
+            }
+            return back()->with('error', 'Coś poszło nie tak');
+        }
+        return back()->with('error', 'Nie znaleziono przedmiotu');
     }
 }

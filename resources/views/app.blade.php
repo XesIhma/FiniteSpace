@@ -18,16 +18,16 @@
 <div id="wrapper">
   <header>
     <div id="avatar_box">
-      <div id="avatar_img" style=" background-image: url(/img{{auth()->user()->profiles()[0]->image}})"></div>
+      <div id="avatar_img" style=" background-image: url(/img{{currentProfile()->image}})"></div>
     </div>
     <div id="info_box">
       @php
-        $max_exp = auth()->user()->profiles()[0]->lvl(auth()->user()->profiles()[0]->exp)*30;
+        $max_exp = currentProfile()->lvl(currentProfile()->exp)*30;
       @endphp
-      <b>{{auth()->user()->profiles()[0]->name}}</b><br>
-      <b>Lvl:</b> {{auth()->user()->profiles()[0]->lvl()}} <br>
-      <b>Exp:</b> {{auth()->user()->profiles()[0]->exp}}/{{auth()->user()->profiles()[0]->expMax()}}<br>
-      <b>UPD:</b> {{auth()->user()->profiles()[0]->money}}<br>
+      <b>{{currentProfile()->name}}</b><br>
+      <b>Lvl:</b> {{currentProfile()->lvl()}} <br>
+      <b>Exp:</b> {{currentProfile()->exp}}/{{currentProfile()->expMax()}}<br>
+      <b>UPD:</b> {{currentProfile()->money}}<br>
     </div>
     <div id="action_box">
       <div id="action_gif"></div>

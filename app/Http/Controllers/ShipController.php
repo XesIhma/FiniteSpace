@@ -9,7 +9,7 @@ use App\Models\Cargo;
 class ShipController extends Controller
 {
     function show(){
-        $ship = Ship::where('profile_id',  auth()->user()->profiles()[0]->id)->first();
+        $ship = currentShip();
 
         if($ship) return view('ship_general', ['ship' => $ship]);
         
@@ -18,7 +18,7 @@ class ShipController extends Controller
     }
 
     function cargoHold(){
-        $ship = Ship::where('profile_id',  auth()->user()->profiles()[0]->id)->first();
+        $ship = currentShip();
         $cargoHolds = Cargo::where('ship_id',  $ship->id)->get();
 
         if($cargoHolds) return view('cargohold', compact('ship', 'cargoHolds'));
