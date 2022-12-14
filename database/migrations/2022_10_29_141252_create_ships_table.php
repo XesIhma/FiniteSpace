@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('ships', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('class');
+            $table->string('type');
+            $table->string('UAN'); //xx planet yyy producent zz class aaa unique number ex. 01-004-03-00277
             $table->string('description');
-            $table->string('size')->default('300');
+            $table->string('size')->default('300');//TODO size x, y and z
             $table->string('image')->default('ships/default.jpg');
+            $table->integer('stack_size')->default('1');
             $table->integer('status')->default('0');
             $table->integer('hp')->default('100');
             $table->integer('hp_max')->default('100');
@@ -35,8 +37,8 @@ return new class extends Migration
             $table->integer('weapon_slots')->default('2');
             $table->integer('engine_slots')->default('2');
             $table->integer('armor_slots')->default('10');
-            $table->integer('price')->default('20000');
-            $table->integer('last_price')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('last_price')->default('1000');;
             $table->timestamp('bought_at')->nullable();
             $table->foreignId('profile_id')->nullable()->constrained();
             $table->foreignId('clan_id')->nullable()->constrained();

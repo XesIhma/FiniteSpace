@@ -9,7 +9,8 @@ class Profile extends Model
 {   
     
     use HasFactory;
-    protected $fillable = ['name', 'image', 'user_id'];
+    
+    protected $guarded = [];
 
     public function lvl(){
         return ceil($this->exp / 30);

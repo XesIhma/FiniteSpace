@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ship;
+use App\Models\Engine;
 use App\Models\Cargo;
 
 class ShipController extends Controller
@@ -12,6 +13,16 @@ class ShipController extends Controller
         $ship = currentShip();
 
         if($ship) return view('ship_general', ['ship' => $ship]);
+        
+        return view('noship');
+        
+    }
+
+    function showDrive(){
+        $ship = currentShip();
+        $engines = Engine::where('ship_id', $ship->id)->get();
+
+        if($ship) return view('ship_drive', compact('ship', 'engines'));
         
         return view('noship');
         

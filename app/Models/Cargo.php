@@ -9,6 +9,8 @@ class Cargo extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function items(){
         $items = new \Illuminate\Database\Eloquent\Collection; //empty collection
         $ships = Ship::where('cargo_id', $this->id)->get();
@@ -23,7 +25,7 @@ class Cargo extends Model
         $items = $items->concat($engines);
         $items = $items->concat($armors);
         $items = $items->concat($materials);
-        
+        $items = organiseInventory($items);
         return($items);
     }
 }

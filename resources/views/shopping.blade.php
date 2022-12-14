@@ -9,16 +9,16 @@
 	<div class="content">
 		<br>
 
-		@foreach ($categories as $category)
+		@foreach ($categories as $name=>$category)
 		<div id="ships" class="panel category">
-			<p class="bar"><b>{{$category[0]}}</b></p>
+			<p class="bar"><b>{{$name}}</b></p>
 				<div class="hover_scroll flex100 scroll_left">
 					<img src="../img/left_arrow.png" alt="">
 				</div>
 				<div class="category_wraper" id="wraper1">
 					<div class="category_roller">
 
-						@foreach ($category[1] as $position)
+						@foreach ($category as $position)
 
 						<div class="position">
 							<div class="top">
@@ -26,7 +26,7 @@
 								<div class="info">
 									<h4 class="position_name">{{$position->name}}</h4><br>
 									<span>Typ: {{$position->type}}</span><br>
-									<span>Masa: {{$position->mass}}</span><br>
+									<span>Masa: {{$position->getMass()}}</span><br>
 									<span>Wymiary: </span><span>{{$position->size}}</span><br>
 									<span>HP: </span><span>{{$position->hp_max}}</span><br>
 									@if($position->resistance)
@@ -61,7 +61,7 @@
 										@endif
 										<p>Cena: {{$position->price}}</p>
 										@if (currentProfile()->money >= $position->price)
-											<a href="purchase?category={{$category[0]}}&item_id={{$position->id}}" class="active">KUP</a>
+											<a href="purchase?offer_id={{$position->offerId()}}" class="active">KUP</a>
 										@else
 											<a href="#" class="inactive">KUP</a>
 										@endif
@@ -86,10 +86,12 @@
 			
 	</div>
 </div>
-<div id="bought" class="panel">
+
+
+<div id="purchase" class="panel">
 	<p class="bar"><b>Twoje zakupy</b></p>
 	<div class="content">
-		@foreach($boughts as $position)
+		@foreach($purchases as $position)
 		<div class="position">
 			<div class="image" style="background-image: url(img/{{$position->image}})"></div>
 			<div class="info">
@@ -98,19 +100,35 @@
 					<span>{{ $position->created_at->format('d.m.Y') }}</span><br>
 					<span>Kupiono od: {{getProfileName($position->seller_id)}}</span><br>
 					<span>Cena: {{$position->price}}</span><br><br>
-					@if(!$position->is_taken)
-						<a href="take?category={{$category[0]}}&item_id={{$position->id}}" class="active">ODBIERZ</a>
-					@else
+					@if($position->is_taken)
 						<a href="#" class="inactive">ODEBRANO</a>
+					@else
+						<a href="take?category={{$category[0]}}&item_id={{$position->id}}" class="active">ODBIERZ</a>
 					@endif
 				</div>
 				
-				</div>
+				
 			</div>
 							
 		</div>
 		@endforeach
+	</div>
+</div>
+
+
+
+<div id="offer" class="panel">
+	<p class="bar"><b>Stwórz ofertę</b></p>
+	<div class="content">
+		
+		<a href="create_offer">Stwórz ofertę</a>
+
 		
 	</div>
 </div>
-      @endsection
+
+
+
+
+
+@endsection

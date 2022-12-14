@@ -9,5 +9,5 @@ class Ship extends Item
 {
     use HasFactory;
 
-    protected $fillable = ['model', 'class', 'description'];
+    protected $guarded = [];
 }

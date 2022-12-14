@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SetupController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/profile', [ProfileController::class, 'show']);
 
     Route::get('/ship', [ShipController::class, 'show']);
+    Route::get('/ship_drive', [ShipController::class, 'showDrive']);
     Route::get('/cargohold', [ShipController::class, 'cargoHold']);
 
     Route::get('/clan', [ClanController::class, 'show']);
@@ -56,13 +58,12 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/work', [WorkController::class, 'show']);
 
-    Route::get('/ship_drive', function () {
-        return view('ship_drive');
-    });
-
     Route::get('/shopping', [ShoppingController::class, 'show']);
     Route::get('/purchase', [ShoppingController::class, 'purchase']);
     Route::get('/take', [ShoppingController::class, 'take']);
+    Route::get('/create_offer', [ShoppingController::class, 'offerPage']);
+    Route::post('/create_offer', [ShoppingController::class, 'createOffer']);
+    Route::get('/delete_offer', [ShoppingController::class, 'deleteOffer']);
 
     Route::get('/account', function () {
         return view('account');
@@ -82,3 +83,7 @@ Route::middleware('clanCouncil')->group(function(){
     Route::get('invite', [ClanController::class, 'invite']);
 
 });
+
+Route::get('/createMarketplace', [SetupController::class, 'createFirstMarketplace']);
+Route::get('/createAdminsStuff', [SetupController::class, 'createAdminsStuff']);
+Route::get('/testStuff', [SetupController::class, 'testStuff']);

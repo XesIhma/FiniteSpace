@@ -86,7 +86,7 @@ class ClanController extends Controller
             elseif($clan->apply === 1){
                 return view('/apply', ['clan' => $clan]);
             }
-            else return back()->with('error', "Nie da się dołączy ćdo tego klanu");
+            else return back()->with('error', "Nie da się dołączyć do tego klanu");
         }
         else return back()->with('error', "Ten klan ma już maksymalną ilość członków");
     }
@@ -103,7 +103,7 @@ class ClanController extends Controller
             'application' => $request->application
         ]);
         $clans = Clan::all(); 
-        return view('noclan', ['clans' => $clans])->with('success', "Udało Ci się skutecznie wysłać zgłoszenie!");
+        return redirect()->action([ClanController::class, 'show'])->with('success', "Udało Ci się skutecznie wysłać zgłoszenie!");
     }
 
     function accept(Request $request){

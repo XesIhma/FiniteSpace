@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('weapons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('class');
+            $table->string('type');
+            $table->string('UAN');
             $table->string('description');
             $table->string('size')->default('10');
             $table->string('image')->default('weapons/default.jpg');
+            $table->integer('stack_size')->default('5');
             $table->integer('status')->default('0');
             $table->integer('hp')->default('50');
             $table->integer('hp_max')->default('50');
@@ -33,8 +35,8 @@ return new class extends Migration
             $table->integer('ammo')->nullable();
             $table->integer('ammo_max')->nullable();
             $table->string('slot')->default('weapon');
-            $table->integer('price')->default('100');
-            $table->integer('last_price')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('last_price')->default('100');;
             $table->timestamp('bought_at')->nullable();
             $table->foreignId('profile_id')->nullable()->constrained();
             $table->foreignId('ship_id')->nullable()->constrained();

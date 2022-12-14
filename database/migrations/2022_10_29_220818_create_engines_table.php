@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('engines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('class');
+            $table->string('type');
+            $table->string('UAN');
             $table->string('description');
             $table->string('size')->default('20');
             $table->string('image')->default('engines/default.jpg');
+            $table->integer('stack_size')->default('5');
             $table->integer('status')->default('0');//0 - offline 1 - online 2 - standby
             $table->integer('hp')->default('100');
             $table->integer('hp_max')->default('100');
@@ -33,8 +35,8 @@ return new class extends Migration
             $table->integer('thrust')->default('0');
             $table->integer('thrust_max')->default('1000');
             $table->string('slot')->default('engine');
-            $table->integer('price')->default('0');
-            $table->integer('last_price')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('last_price')->default('100');;
             $table->timestamp('bought_at')->nullable();
             $table->foreignId('profile_id')->nullable()->constrained();
             $table->foreignId('ship_id')->nullable()->constrained();

@@ -116,10 +116,24 @@ table.cargo th{
   padding: 5px 0px 5px 5px;
 }
 table.cargo td{
+  position: relative;
   width:100px;
   height:100px;
   margin: 0 5px 5px 0;
   border: 1px solid #C1C2C2;
   background-size: cover;
   background-position: center;
+}
+.td_item .item_count{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  height: 20px;
+  border-left: 1px solid #C1C2C2;
+  border-top: 1px solid #C1C2C2;
+  background-color: rgba(36, 36, 50, 0.7);
 }

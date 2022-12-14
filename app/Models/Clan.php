@@ -11,7 +11,7 @@ class Clan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'tag', 'user_id', 'default_rank'];
+    protected $guarded = [];
 
     public function numberOfMembers(){
         $number = User::where('clan_id', $this->id)->count();

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('cargos', function (Blueprint $table) {
             $table->id();
-            $table->integer('voulme');
-            $table->string('type')->default('general');
+            $table->integer('volume');
+            $table->string('type')->default('general'); //general, bulk, tank, hangar
             $table->integer('unloading_time')->default('5');
             $table->foreignId('ship_id')->constrained();
             $table->timestamps();
