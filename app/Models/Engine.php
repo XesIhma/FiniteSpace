@@ -10,4 +10,9 @@ class Engine extends Item
     use HasFactory;
 
     protected $guarded = [];
+
+    public function engineType()
+    {
+        return $this->belongsTo(EngineType::class);
+    }
 }

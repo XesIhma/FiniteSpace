@@ -12,6 +12,9 @@ use App\Models\Material;
 use App\Models\Cargo;
 use App\Models\Profile;
 
+use App\Models\ShipType;
+use App\Models\WeaponType;
+
 class SetupController extends Controller
 {
     function createFirstMarketplace(){
@@ -251,5 +254,11 @@ class SetupController extends Controller
     function testStuff(){
         $UAN = generateUAN("Pancerze");
         dump($UAN);
+    }
+
+    function shipType(){
+        $types = Armor::find(1);
+        dump($types);
+        echo $types->armorType->name;
     }
 }

@@ -63,7 +63,7 @@
 										@if (currentProfile()->money >= $position->price)
 											<a href="purchase?offer_id={{$position->offerId()}}" class="active">KUP</a>
 										@else
-											<a href="#" class="inactive">KUP</a>
+											<a href="#" class="inactive" title="Masz za mało pieniędzy">KUP</a>
 										@endif
 									</div>
 								</div>
@@ -91,7 +91,7 @@
 <div id="purchase" class="panel">
 	<p class="bar"><b>Twoje zakupy</b></p>
 	<div class="content">
-		@foreach($purchases as $position)
+		@foreach($offers as $position)
 		<div class="position">
 			<div class="image" style="background-image: url(img/{{$position->image}})"></div>
 			<div class="info">

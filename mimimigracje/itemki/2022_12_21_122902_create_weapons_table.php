@@ -39,7 +39,8 @@ return new class extends Migration
             $table->integer('last_price')->default('100');;
             $table->timestamp('bought_at')->nullable();
             $table->foreignId('profile_id')->nullable()->constrained();
-            $table->foreignId('ship_id')->nullable()->constrained();
+            $table->foreignId('slot_id')->nullable()->constrained();
+            $table->foreignId('cargo_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

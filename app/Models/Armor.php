@@ -10,4 +10,9 @@ class Armor extends Item
     use HasFactory;
 
     protected $guarded = [];
+
+    public function armorType()
+    {
+        return $this->belongsTo(ArmorType::class);
+    }
 }

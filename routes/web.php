@@ -48,7 +48,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/profile', [ProfileController::class, 'show']);
 
     Route::get('/ship', [ShipController::class, 'show']);
+    Route::get('/ship_weapon', [ShipController::class, 'showWeapon']);
     Route::get('/ship_drive', [ShipController::class, 'showDrive']);
+    Route::get('/ship_armor', [ShipController::class, 'showArmor']);
     Route::get('/cargohold', [ShipController::class, 'cargoHold']);
 
     Route::get('/clan', [ClanController::class, 'show']);
@@ -87,3 +89,4 @@ Route::middleware('clanCouncil')->group(function(){
 Route::get('/createMarketplace', [SetupController::class, 'createFirstMarketplace']);
 Route::get('/createAdminsStuff', [SetupController::class, 'createAdminsStuff']);
 Route::get('/testStuff', [SetupController::class, 'testStuff']);
+Route::get('/shipType', [SetupController::class, 'shipType']);

@@ -15,15 +15,10 @@ use Carbon\Carbon; //time
 class ShoppingController extends Controller
 {
     function show(){
-
+        //TODO expiration
         $offers = Offer::where('status', 0)->get();
 
         $data = [];
-        //App\User::where('is_admin',true)->get();
-        // $data[0] = ["Statki", Ship::where('price', '>', 0)->get()];
-        // $data[1] = ["Bronie", Weapon::where('price', '>', 0)->get()];
-        // $data[2] = ["Pancerze", Armor::where('price', '>', 0)->get()];
-        // $data[3] = ["Silniki", Engine::where('price', '>', 0)->get()];
 
         $data["Statki"] = new \Illuminate\Database\Eloquent\Collection;
         $data["Bronie"] = new \Illuminate\Database\Eloquent\Collection;
@@ -35,9 +30,9 @@ class ShoppingController extends Controller
         }
 
 
-        $purchases = Offer::where('buyer_id', currentProfile()->id)->get();
+        $offers = Offer::where('buyer_id', currentProfile()->id)->get();
         
-        return view('shopping', ['categories'=>$data, 'purchases'=>$purchases]);
+        return view('shopping', ['categories'=>$data, 'offers'=>$offers]);
     }
 
     function purchase(Request $request){
@@ -124,9 +119,9 @@ class ShoppingController extends Controller
         $item_id = explode("::",$request->input('item'))[1]; //separate category from id by '::' ex. Statki::17
         $item = findItem($category, $item_id);
         $count = $request->input('count');
-        $item = $item->unstack($count);
         $hours = (int)$request->input('time');
         $expirationDate = Carbon::now()->addHours($hours)->format('Y-m-d H:i:s');
+        $item = $item->unstack($count);
         if($item){
             $offer = Offer::create([
                 'seller_id' => currentProfile()->id,

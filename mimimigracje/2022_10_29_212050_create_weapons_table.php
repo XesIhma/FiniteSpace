@@ -13,33 +13,33 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('engines', function (Blueprint $table) {
+        Schema::create('weapons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('type');
             $table->string('UAN');
             $table->string('description');
-            $table->string('size')->default('20');
-            $table->string('image')->default('engines/default.jpg');
+            $table->string('size')->default('10');
+            $table->string('image')->default('weapons/default.jpg');
             $table->integer('stack_size')->default('5');
-            $table->integer('status')->default('0');//0 - offline 1 - online 2 - standby
-            $table->integer('hp')->default('100');
-            $table->integer('hp_max')->default('100');
+            $table->integer('status')->default('0');
+            $table->integer('hp')->default('50');
+            $table->integer('hp_max')->default('50');
             $table->double('deuter_usage', 10, 3)->default('0');
-            $table->double('deuter_usage_max', 10, 3)->default('50');
-            $table->double('oxygen_usage', 10, 3)->default('0');
-            $table->double('oxygen_usage_max', 10, 3)->default('150');
+            $table->double('deuter_usage_max', 10, 3)->default('0');
             $table->integer('power')->default('0');
-            $table->integer('power_max')->default('100');
-            $table->integer('mass')->default('500');
-            $table->integer('thrust')->default('0');
-            $table->integer('thrust_max')->default('1000');
-            $table->string('slot')->default('engine');
+            $table->integer('power_max')->default('150');
+            $table->integer('mass')->default('120');
+            $table->integer('damage')->default('150');
+            $table->string('ammo_type')->nullable();
+            $table->integer('ammo')->nullable();
+            $table->integer('ammo_max')->nullable();
+            $table->string('slot')->default('weapon');
             $table->integer('price')->nullable();
             $table->integer('last_price')->default('100');;
             $table->timestamp('bought_at')->nullable();
             $table->foreignId('profile_id')->nullable()->constrained();
-            $table->foreignId('ship_id')->nullable()->constrained();
+            $table->foreignId('slot_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
@@ -51,6 +51,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('engines');
+        Schema::dropIfExists('weapons');
     }
 };

@@ -10,4 +10,9 @@ class Material extends Item
     use HasFactory;
 
     protected $guarded = [];
+
+    public function materialType()
+    {
+        return $this->belongsTo(MaterialType::class);
+    }
 }

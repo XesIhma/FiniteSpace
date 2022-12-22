@@ -13,8 +13,8 @@
 				<ul>
 					<a href="ship"><li>Ogólne</li></a>
 					<a href="ship_drive"><li>Napęd</li></a>
-					<a href="nopage"><li>Osłony</li></a>
-					<a href="nopage"><li>Uzbrojenie</li></a>
+					<a href="ship_armor"><li>Osłony</li></a>
+					<a href="ship_weapon"><li>Uzbrojenie</li></a>
 					<a href="nopage"><li>Układy</li></a>
 					<a href="cargohold"><li>Ładownia</li></a>
 				</ul>

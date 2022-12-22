@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Model;
 
 
 if(!function_exists('getProfileName')){
-
   function getProfileName($id){
     $profile = Profile::where('id', $id)->first();
     return $profile->name;
@@ -24,8 +23,8 @@ if(!function_exists('getProfileName')){
 }
 
 if(!function_exists('findItem')){
-//TODO
   function findItem($category, $itemId){
+    //TODO
     switch($category){
       case "Statki": 
           $item = Ship::where('id', $itemId)->first();
@@ -49,7 +48,6 @@ if(!function_exists('findItem')){
 }
 
 if(!function_exists('findUser')){
-
   function findUser($userId=0, $profileId=0, $userName=''){
     if($userId){
       return User::where('id', $userId)->first();
@@ -67,7 +65,6 @@ if(!function_exists('findUser')){
 }
 
 if(!function_exists('currentProfile')){
-
   function currentProfile(){
     //TODO
     return auth()->user()->profiles()[0];
@@ -75,7 +72,6 @@ if(!function_exists('currentProfile')){
 }
 
 if(!function_exists('currentShip')){
-
   function currentShip(){
     $profile = currentProfile();
     //TODO
@@ -86,22 +82,21 @@ if(!function_exists('currentShip')){
 }
 
 if(!function_exists('suitableCargo')){
-
   function suitableCargo($item, $shipId=0){
     //TODO
     if(!$shipId) $cargoHolds = Cargo::where('ship_id', currentShip()->id)->get();
     else $cargoHolds = Cargo::where('ship_id', $shipId)->get();
     
 
-    if ($item->category() == "Ship")
+    if ($item->category() == "Statki")
       foreach ($cargoHolds as $cargo)
         if($cargo->type == "hangar") return $cargo;
       
-    if ($item->category() == "Material")
+    if ($item->category() == "Materiały")
       foreach ($cargoHolds as $cargo)
           if($cargo->type == "bulk") return $cargo;
     
-    if ($item->category() == "Liquid")
+    if ($item->category() == "Fuel") //TODO
       foreach ($cargoHolds as $cargo)
           if($cargo->type == "tank") return $cargo;
 
@@ -114,7 +109,6 @@ if(!function_exists('suitableCargo')){
 }
 
 if(!function_exists('generateUAN')){
-
   function generateUAN($category){
     //TODO
     //xx-yyy-zz-aaaaa
@@ -158,6 +152,9 @@ if(!function_exists('generateUAN')){
     return $planet.'-'.$producent.'-'.$class.'-'.$unique;
   }
 
+}
+
+if(!function_exists('organiseInventory')){
   function organiseInventory($items){
     $uans = [];
     foreach($items as $item){
@@ -176,7 +173,6 @@ if(!function_exists('generateUAN')){
         try{
           if(($item->UAN == $uan) && ($iteration < $item->stack_size)){
             $stack[] = $item;
-            unset($items[$key]);
             $iteration++;
           }
           else if(($item->UAN == $uan) && ($iteration >= $item->stack_size)){
@@ -184,7 +180,6 @@ if(!function_exists('generateUAN')){
             $iteration=0;
             $stack = [];
             $stack[] = $item;
-            unset($items[$key]);
           }
         }catch (exception $e) {}
       }
@@ -203,7 +198,9 @@ if(!function_exists('generateUAN')){
     return $newItems;
     
   }
+}
 
+if(!function_exists('getCount')){
   function getCount($stack){
     //TODO amunition
     if ($stack[0]->category()=="Materiały"){
@@ -211,5 +208,4 @@ if(!function_exists('generateUAN')){
     }
     return count($stack);
   }
-
 }
