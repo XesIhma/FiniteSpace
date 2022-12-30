@@ -9,8 +9,6 @@ use App\Models\Ship;
 
 class Clan extends Model
 {
-    use HasFactory;
-
     protected $guarded = [];
 
     public function numberOfMembers(){

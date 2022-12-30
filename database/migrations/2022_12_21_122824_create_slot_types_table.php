@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name'); // kontaktówka, wyrzutnia, generator
             $table->string('type'); //weapon, engine, etc
-            $table->integer('numer')->default('1');
+            $table->integer('position')->default('1'); //0-left, 1-up, 2-right, 3-down
+            $table->integer('position_z')->default('0'); //from top to bottom 0,1,2
+            $table->string('size')->default('S'); //S, M, L, XL
             $table->integer('max_power')->default('1000');
             $table->integer('max_hydraulic')->default('10');
-            $table->integer('max_hydroogen')->default('100');
+            $table->integer('max_hydrogen')->default('100');
             $table->integer('max_deuter')->default('100');
             $table->integer('max_oxygen')->default('100');
             $table->foreignId('ship_type_id')->constrained();

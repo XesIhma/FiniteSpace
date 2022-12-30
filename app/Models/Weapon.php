@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Weapon extends Item
 {
-    use HasFactory;
-
     protected $guarded = [];
 
     public function weaponType()

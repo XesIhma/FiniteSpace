@@ -9,86 +9,48 @@ use App\Models\Weapon;
 use App\Models\Engine;
 use App\Models\Armor;
 use App\Models\Material;
+use App\Models\Amunition;
 use App\Models\Cargo;
 use App\Models\Profile;
 
 use App\Models\ShipType;
 use App\Models\WeaponType;
+use App\Models\EngineType;
+use App\Models\ArmorType;
+use App\Models\MaterialType;
+use App\Models\AmunitionType;
+
+use App\Models\Slot;
+use App\Models\SlotType;
 
 class SetupController extends Controller
 {
-    function createFirstMarketplace(){
-        $admin = findUser(userName : 'XesIhma');
-        $profile = Profile::where('user_id', $admin->id)->first();
-        $ahmar = Ship::where('name', 'Ahmar')->first();
-        if(!$ahmar){
-            $ship = Ship::create([
-                'name' => "Ahmar",
-                'type' => "stacja handlowa",
-                'UAN' => generateUAN("Statki"),
-                'description' => "Wielka stacja handlowa, wyposarzona w kilka doków kosmicznych i wielką przestrzeń magazynową. ",
-                'size' => "500m x 500m x 130m",
-                'image' => "ships/trade_station.jpg",
-                'status' => 1,
-                'hp' => 150000,
-                'hp_max' => 15000,
-                'mass' => 10000000,
-                'profile_id' => $profile->id
-            ]);
-            echo "Stworzono stację";
-            $cargoGeneral = Cargo::create([
-                'volume' => 10000,
-                'type' => 'general',
-                'unloading_time' => 10,
-                'ship_id' => $ship->id
-            ]);
-            $cargoOre = Cargo::create([
-                'volume' => 20000,
-                'type' => 'bulk',
-                'unloading_time' => 25,
-                'ship_id' => $ship->id
-            ]);
-            $cargoFuel = Cargo::create([
-                'volume' => 5000,
-                'type' => 'tank',
-                'unloading_time' => 30,
-                'ship_id' => $ship->id
-            ]);
-            $cargoHangar = Cargo::create([
-                'volume' => 25000,
-                'type' => 'hangar',
-                'unloading_time' => 60,
-                'ship_id' => $ship->id
-            ]);
-            echo "Stworzono ładownie";
-        }
-        
-
-    
-    }
 
     function createAdminsStuff(){
         $admin = findUser(userName : 'XesIhma');
-        $profile = Profile::where('user_id', $admin->id)->first();
+        $profile = $admin->profiles[0];
+    
         $adminShip = Ship::where('profile_id', $profile->id)->first();
         if(!$adminShip){
-            $ship = Ship::create([
+            $shipType = ShipType::create([
                 'name' => "Frightener",
                 'type' => "myśliwiec",
                 'UAN' => generateUAN("Statki"),
                 'description' => "Bardzo szybki i sprawny statek bojowy. Potrafi stawić czoła kilku jednostkom podobnej klasy jednocześnie",
-                'size' => "35m x 12m x 10m",
+                'size_x' => 10,
+                'size_y' => 10,
+                'size_z' => 30,
                 'image' => "ships/freightener.jpg",
-                'status' => 1,
-                'hp' => 4500,
                 'hp_max' => 4500,
                 'mass' => 12400,
                 'power_max' => 2500,
-                'deuter' => 500,
                 'deuter_max' => 500,
-                'weapon_slots' => 8,
-                'engine_slots' => 1,
-                'armor_slots' => 24,
+            ]);
+            $ship = Ship::create([
+                'ship_type_id' => $shipType->id,
+                'deuter' => 500,
+                'status' => 1,
+                'hp' => 4500,
                 'profile_id' => $profile->id
             ]);
             echo "Stworzono statek";
@@ -105,7 +67,29 @@ class SetupController extends Controller
                 'unloading_time' => 25,
                 'ship_id' => $ship->id
             ]);
-            echo "Stworzono ładownię";
+            echo "Stworzono ładownie";
+
+            $slotTypeData = [
+                ["Działo dziobowe", "weapon", 1, 0, "M", $shipType->id],
+                ["Działko kontaktowe", "weapon", 0, 1, "S", $shipType->id],
+                ["Działko kontaktowe", "weapon", 2, 1, "S", $shipType->id],
+                ["Wyrzutnia rakiet", "weapon", 1, 2, "M", $shipType->id],
+                ["Luk torpedowy", "weapon", 3, 2, "M", $shipType->id],
+                ["Działo rufowe", "weapon", 0, 3, "S", $shipType->id],
+                ["Działo rufowe", "weapon", 2, 3, "S", $shipType->id],
+                ["Główny silnik", "engine", 1, 4, "M", $shipType->id]
+            ];
+
+            $slotTypes = generateSlotTypes($slotTypeData);
+
+            $slotType = SlotType::create([
+                'name' => "Działo dziobowe",
+                'type' => "weapon",
+                'position' => "up",
+                'position_z' => 0,
+                'size' => "M",
+                'ship_type_id' => $shipType->id,
+            ]);
 
             $engine = Engine::create([
                 'name' => "Koolaid Rocket",
@@ -247,6 +231,55 @@ class SetupController extends Controller
                 'profile_id' => $profile->id
             ]);
             echo "Stworzono rudę";
+        }
+
+        $ahmar = Ship::where('name', 'Ahmar')->first();
+        if(!$ahmar){
+            $shipType = ShipType::create([
+                'name' => "Ahmar",
+                'type' => "stacja handlowa",
+                'UAN' => generateUAN("Statki"),
+                'description' => "Wielka stacja handlowa, wyposarzona w kilka doków kosmicznych i wielką przestrzeń magazynową. ",
+                'size_x' => 500,
+                'size_y' => 500,
+                'size_z' => 130,
+                'image' => "ships/trade_station.jpg",
+                'hp_max' => 150000,
+                'mass' => 10000000,
+            ]);
+            $ship = Ship::create([
+                'ship_type_id' => $shipType->id,
+                'hp' => 150000,
+                'status' => 1,
+                'profile_id' => $profile->id
+            ]);
+            echo "Stworzono stację Ahmar";
+
+            $cargoGeneral = Cargo::create([
+                'volume' => 10000,
+                'type' => 'general',
+                'unloading_time' => 10,
+                'ship_id' => $ship->id
+            ]);
+            $cargoOre = Cargo::create([
+                'volume' => 20000,
+                'type' => 'bulk',
+                'unloading_time' => 25,
+                'ship_id' => $ship->id
+            ]);
+            $cargoFuel = Cargo::create([
+                'volume' => 5000,
+                'type' => 'tank',
+                'unloading_time' => 30,
+                'ship_id' => $ship->id
+            ]);
+            $cargoHangar = Cargo::create([
+                'volume' => 25000,
+                'type' => 'hangar',
+                'unloading_time' => 60,
+                'ship_id' => $ship->id
+            ]);
+            echo "Stworzono ładownie";
         }
 
     }

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cargo extends Model
 {
-    use HasFactory;
-
+   
     protected $guarded = [];
 
+    
     public function items(){
         $items = new \Illuminate\Database\Eloquent\Collection; //empty collection
         $ships = Ship::where('cargo_id', $this->id)->get();

@@ -12,6 +12,9 @@ use App\Models\Cargo;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Slot;
+use App\Models\SlotType;
+
 
 
 if(!function_exists('getProfileName')){
@@ -67,7 +70,7 @@ if(!function_exists('findUser')){
 if(!function_exists('currentProfile')){
   function currentProfile(){
     //TODO
-    return auth()->user()->profiles()[0];
+    return auth()->user()->profiles[0];
   }
 }
 
@@ -207,5 +210,19 @@ if(!function_exists('getCount')){
       return $stack[0]->count;
     }
     return count($stack);
+  }
+}
+
+if(!function_exists('generateSlotTypes')){
+  function generateSlotTypes($slotTypeData){
+    foreach($slotTypeData as $data)
+    $slotType = SlotType::create([
+      'name' => $data[0],
+      'type' => $data[1],
+      'position' => $data[2],
+      'position_z' => $data[3],
+      'size' => $data[4],
+      'ship_type_id' => $data[5]
+    ]);
   }
 }

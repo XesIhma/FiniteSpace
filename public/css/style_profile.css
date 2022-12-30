@@ -2,6 +2,7 @@
   float: left;
 }
 .content_profile{
+  padding-top: 15px;
   overflow:hidden;
 }
 .avatar_box{

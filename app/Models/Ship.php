@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ship extends Item
 {
-    use HasFactory;
-
     protected $guarded = [];
 
     public function shipType()
     {
         return $this->belongsTo(ShipType::class);
+    }
+
+    public function cargos()
+    {
+        return $this->hasMany(Cargo::class);
     }
 }

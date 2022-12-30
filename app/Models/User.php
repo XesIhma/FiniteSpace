@@ -45,12 +45,13 @@ class User extends Authenticatable
     ];
 
     public function profiles(){
-        return Profile::where('user_id', $this->id)->get();
+        return $this->hasMany(Profile::class);
     }
     
     public function clan(){
-        if (Clan::where('id', $this->clan_id)->first()){
-            return Clan::where('id', $this->clan_id)->first()->name;}
+        $clan = Clan::where('id', $this->clan_id)->first();
+        if ($clan){
+            return $clan->name;}
         
         return "[brak]";
     }
