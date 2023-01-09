@@ -23,7 +23,7 @@ return new class extends Migration
             $table->double('size_x', 10, 3)->default('10');
             $table->double('size_y', 10, 3)->default('10');
             $table->double('size_z', 10, 3)->default('30');
-            $table->integer('stack_size')->default('5');
+            $table->integer('stack_size')->default('20');
             $table->integer('hp_max')->default('100');
             $table->integer('mass')->default('100');
             $table->integer('resistance')->default('50');

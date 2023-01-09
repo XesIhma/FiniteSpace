@@ -23,7 +23,6 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->integer('last_price')->default('1000');
             $table->timestamp('bought_at')->nullable();
-            $table->foreignId('ship_type_id')->constrained();
             $table->foreignId('profile_id')->nullable()->constrained();
             $table->foreignId('slot_id')->nullable()->constrained();
             $table->foreignId('cargo_id')->nullable()->constrained();

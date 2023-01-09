@@ -4,8 +4,9 @@
 
 @section('content_ship')
 <div class="eq_box">
-  @foreach($weapons as $weapon)
-  @if(isset($weapon))
+  @foreach($slots as $slot)
+    @if(isset($slot->item))
+    @php $weapon = $slot->item @endphp
   <div class="eq_item">
     <div class="eq_img" style="background-image: url(img/{{$weapon->image}})">
       <div class="meter">

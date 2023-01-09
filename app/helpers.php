@@ -15,6 +15,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Slot;
 use App\Models\SlotType;
 
+use App\Models\ShipType;
+use App\Models\WeaponType;
+use App\Models\EngineType;
+use App\Models\ArmorType;
+use App\Models\MaterialType;
+use App\Models\AmunitionType;
 
 
 if(!function_exists('getProfileName')){
@@ -123,19 +129,19 @@ if(!function_exists('generateUAN')){
 
     switch($category){
       case "Statki": 
-        $uans = Ship::select('UAN')->get();
+        $uans = ShipType::select('UAN')->get();
         $class = "01";
         break;
       case "Bronie": 
-        $uans = Weapon::select('UAN')->get();
+        $uans = WeaponType::select('UAN')->get();
         $class = "02";
         break;
       case "Silniki":
-        $uans = Engine::select('UAN')->get();
+        $uans = EngineType::select('UAN')->get();
         $class = "03"; 
         break;
       case "Pancerze": 
-        $uans = Armor::select('UAN')->get();
+        $uans = ArmorType::select('UAN')->get();
         $class = "04";
         break;
     }
@@ -157,51 +163,6 @@ if(!function_exists('generateUAN')){
 
 }
 
-if(!function_exists('organiseInventory')){
-  function organiseInventory($items){
-    $uans = [];
-    foreach($items as $item){
-      if(isset($item->UAN)){
-        $uans[] = $item->UAN;
-      }
-    }
-    $numbers = array_count_values($uans);
-    $newItems = [];
-    foreach($numbers as $uan=>$count){
-      $stack = [];
-      $iteration = 0;
-      
-      foreach($items as $key=>$item){
-        //echo $item->category()."<br>";
-        try{
-          if(($item->UAN == $uan) && ($iteration < $item->stack_size)){
-            $stack[] = $item;
-            $iteration++;
-          }
-          else if(($item->UAN == $uan) && ($iteration >= $item->stack_size)){
-            $newItems[] = $stack;
-            $iteration=0;
-            $stack = [];
-            $stack[] = $item;
-          }
-        }catch (exception $e) {}
-      }
-      $newItems[] = $stack;
-      
-    }
-
-    //Add materials
-    foreach($items as $item){
-      if($item->category() == "Materiały"){
-        $newItems[] = [$item];
-      }
-    }
-
-    //$items = array_values($items);
-    return $newItems;
-    
-  }
-}
 
 if(!function_exists('getCount')){
   function getCount($stack){
@@ -213,16 +174,3 @@ if(!function_exists('getCount')){
   }
 }
 
-if(!function_exists('generateSlotTypes')){
-  function generateSlotTypes($slotTypeData){
-    foreach($slotTypeData as $data)
-    $slotType = SlotType::create([
-      'name' => $data[0],
-      'type' => $data[1],
-      'position' => $data[2],
-      'position_z' => $data[3],
-      'size' => $data[4],
-      'ship_type_id' => $data[5]
-    ]);
-  }
-}

@@ -9,11 +9,12 @@ use App\Models\Engine;
 use App\Models\Armor;
 use App\Models\Cargo;
 
+use App\Models\Slot;
+
 class ShipController extends Controller
 {
     function show(){
         $ship = currentShip();
-
         if($ship) return view('ship_general', ['ship' => $ship]);
         
         return view('noship');
@@ -23,8 +24,9 @@ class ShipController extends Controller
     function showDrive(){
         $ship = currentShip();
         if($ship){
-            $engines = Engine::where('ship_id', $ship->id)->get();
-            return view('ship_drive', compact('ship', 'engines'));
+            
+            $slots = $ship->engineSlots();
+            return view('ship_drive', compact('ship', 'slots'));
         }
         return view('noship');
         
@@ -34,8 +36,8 @@ class ShipController extends Controller
         $ship = currentShip();
 
         if($ship) {
-            $armors = Armor::where('ship_id', $ship->id)->get();
-            return view('ship_armor', compact('ship', 'armors'));
+            $slots = $ship->armorSlots();
+            return view('ship_armor', compact('ship', 'slots'));
         }
         return view('noship');
         
@@ -45,8 +47,8 @@ class ShipController extends Controller
         $ship = currentShip();
 
         if($ship) {
-            $weapons = Weapon::where('ship_id', $ship->id)->get();
-            return view('ship_weapon', compact('ship', 'weapons'));
+            $slots = $ship->weaponSlots();
+            return view('ship_weapon', compact('ship', 'slots'));
         }
         return view('noship');
         

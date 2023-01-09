@@ -12,6 +12,7 @@ class Item extends Model
         if(get_class($this) == "App\Models\Armor") return "Pancerze";
         if(get_class($this) == "App\Models\Engine") return "Silniki";
         if(get_class($this) == "App\Models\Material") return "Materiały";
+        if(get_class($this) == "App\Models\Ammo") return "Amunicja";
         return "Bagno";
         
     }
@@ -62,6 +63,51 @@ class Item extends Model
             return $new;
         }
         return $this;
+    }
+
+    public function itemType(){
+        if($this->category() == "Statki")           return $this->shipType;
+        else if($this->category() == "Bronie")      return $this->weaponType;
+        else if($this->category() == "Pancerze")    return $this->armorType;
+        else if($this->category() == "Silniki")     return $this->engineType;
+        else if($this->category() == "Materiały")   return $this->materialType;
+        else if($this->category() == "Amunicja")    return $this->ammoType;
+    }
+
+    public function getNameAttribute(){
+        return $this->itemType()->name;
+    }
+    public function getTypeAttribute(){
+        return $this->itemType()->type;
+    }
+    public function getUanAttribute(){
+        return $this->itemType()->UAN;
+    }
+    public function getDescriptionAttribute(){
+        return $this->itemType()->description;
+    }
+    public function getImageAttribute(){
+        return $this->itemType()->image;
+    }
+    public function getHpMaxAttribute(){
+        return $this->itemType()->hp_max;
+    }
+    public function getDeuterMaxAttribute(){
+        return $this->itemType()->deuter_max;
+    }
+    public function getStackSizeAttribute(){
+        return $this->itemType()->stack_size;
+    }
+
+    
+    public function getMassAttribute(){
+        return $this->itemType()->mass;
+    }
+    public function getSizeAttribute(){
+        return $this->itemType()->size_x."m ".$this->itemType()->size_y."m ".$this->itemType()->size_z."m ";
+    }
+    public function getVolumeAttribute(){
+        return $this->itemType()->size_x * $this->itemType()->size_y * $this->itemType()->size_z;
     }
 
 }
