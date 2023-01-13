@@ -78,7 +78,7 @@ class SetupController extends Controller
                 'hp' => 4500,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono statek/n";
+            echo "Stworzono statek\n";
 
             $cargoGeneral = Cargo::create([
                 'volume' => 500,
@@ -92,7 +92,7 @@ class SetupController extends Controller
                 'unloading_time' => 25,
                 'ship_id' => $ship->id
             ]);
-            echo "Stworzono ładownie/n";
+            echo "Stworzono ładownie\n";
 
             $slotTypeData = [
                 ["Główny silnik", "engine", 1, 4, "M", $shipType->id],
@@ -175,7 +175,7 @@ class SetupController extends Controller
                 'cargo_id' => $cargoGeneral->id,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono silniki/n";
+            echo "Stworzono silniki\n";
 
 
             //BRONIE
@@ -285,7 +285,7 @@ class SetupController extends Controller
                 'profile_id' => $profile->id
             ]);
 
-            echo "Stworzono bronie/n";
+            echo "Stworzono bronie\n";
             
 
             //PANCERZE
@@ -334,7 +334,7 @@ class SetupController extends Controller
                     'profile_id' => $profile->id
                 ]);
             }
-            echo "Stworzono pancerze/n";
+            echo "Stworzono pancerze\n";
 
 
             //MATERIAŁY
@@ -364,7 +364,7 @@ class SetupController extends Controller
                 'cargo_id' => $cargoOre->id,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono rudę";
+            echo "Stworzono rudę\n";
         }
 
         $ahmar = ShipType::where('name', 'Ahmar')->first();
@@ -387,7 +387,7 @@ class SetupController extends Controller
                 'status' => 1,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono stację Ahmar";
+            echo "Stworzono stację Ahmar\n";
 
             $cargoGeneral = Cargo::create([
                 'volume' => 10000,
@@ -413,7 +413,7 @@ class SetupController extends Controller
                 'unloading_time' => 60,
                 'ship_id' => $ship->id
             ]);
-            echo "Stworzono ładownie";
+            echo "Stworzono ładownie\n";
         }
 
     }
