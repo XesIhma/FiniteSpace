@@ -1,34 +1,13 @@
-@extends('app')
+@extends('ship')
 
-@section('title', "Twój statek")
-@section('site_css', "css/style_ship.css")
+@section('ship_name', "Brak statku")
 
-
-@section('content')
-<div id="ship" class="panel">
-	<p class="bar"><b>Frightener</b></p>
-	<div class="content, content_ship">
-		<div class="nav_box">
-			<nav>
-				<ul>
-					<a href="ship"><li>Ogólne</li></a>
-					<a href="ship_drive"><li>Napęd</li></a>
-					<a href="nopage"><li>Osłony</li></a>
-					<a href="nopage"><li>Uzbrojenie</li></a>
-					<a href="nopage"><li>Układy</li></a>
-				</ul>
-			</nav>
-		</div>
-		<div class="ship_image" style="background-image: url(@yield('ship_image'));">
-		</div>
-		@yield('content_ship')
-
-	</div>
+@section('content_ship')
+<div class="ship_image" style="background-image: url(img/ships/default.jpg);">
 </div>
-<div id="other_ships" class="panel">
-	<p class="bar"><b>Pozostałe statki</b></p>
-	<div class="content">
-		<p>Nie masz więcej statków.</p><br>
-	</div>
+<div class="info_box">
+  <p>Nie masz statku!</p>
 </div>
-      @endsection
+        
+<div class="alert_box red">Nie masz statku</div>
+@endsection

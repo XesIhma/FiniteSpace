@@ -69,7 +69,7 @@ class SetupController extends Controller
                 'hp_max' => 4500,
                 'mass' => 12400,
                 'power_max' => 2500,
-                'deuter_max' => 500,
+                'deuter_max' => 500
             ]);
             $ship = Ship::create([
                 'ship_type_id' => $shipType->id,
@@ -78,7 +78,7 @@ class SetupController extends Controller
                 'hp' => 4500,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono statek\n";
+            echo "Stworzono statek<br>";
 
             $cargoGeneral = Cargo::create([
                 'volume' => 500,
@@ -92,7 +92,7 @@ class SetupController extends Controller
                 'unloading_time' => 25,
                 'ship_id' => $ship->id
             ]);
-            echo "Stworzono ładownie\n";
+            echo "Stworzono ładownie<br>";
 
             $slotTypeData = [
                 ["Główny silnik", "engine", 1, 4, "M", $shipType->id],
@@ -132,6 +132,7 @@ class SetupController extends Controller
                     'ship_id' => $ship->id
                 ]);
             }
+            echo "Stworzono sloty<br><br>";
 
             
             //SILNIKI
@@ -175,7 +176,7 @@ class SetupController extends Controller
                 'cargo_id' => $cargoGeneral->id,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono silniki\n";
+            echo "Stworzono silniki<br>";
 
 
             //BRONIE
@@ -285,7 +286,7 @@ class SetupController extends Controller
                 'profile_id' => $profile->id
             ]);
 
-            echo "Stworzono bronie\n";
+            echo "Stworzono bronie<br>";
             
 
             //PANCERZE
@@ -334,7 +335,7 @@ class SetupController extends Controller
                     'profile_id' => $profile->id
                 ]);
             }
-            echo "Stworzono pancerze\n";
+            echo "Stworzono pancerze<br>";
 
 
             //MATERIAŁY
@@ -364,9 +365,71 @@ class SetupController extends Controller
                 'cargo_id' => $cargoOre->id,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono rudę\n";
+            echo "Stworzono rudę<br>";
         }
 
+        //DRUGI STATEK
+        $shipType = ShipType::create([
+            'name' => "Rouge",
+            'type' => "lekki myśliwiec",
+            'UAN' => generateUAN("Statki"),
+            'description' => "Podstawowy statek bojowy, prostej konstrukcji. Ma niewielką siłę ognia i opancerzenie, ale czego więcej potrzeba na początek.",
+            'size_x' => 4,
+            'size_y' => 2.5,
+            'size_z' => 12,
+            'image' => "ships/fighter.jpg",
+            'hp_max' => 900,
+            'mass' => 15000,
+            'power_max' => 500,
+            'deuter_max' => 200
+        ]);
+        $ship = Ship::create([
+            'ship_type_id' => $shipType->id,
+            'deuter' => 200,
+            'status' => 0,
+            'hp' => 900,
+            'profile_id' => $profile->id,
+            'cargo_id' => $cargoGeneral->id
+        ]);
+        echo "Stworzono drugi statek<br>";
+
+        $cargoGeneral = Cargo::create([
+            'volume' => 150,
+            'type' => 'general',
+            'unloading_time' => 20,
+            'ship_id' => $ship->id
+        ]);
+        echo "Stworzono ładownię<br>";
+
+        $slotTypeData = [
+            ["Główny silnik", "engine", 1, 2, "S", $shipType->id],
+            ["Działo dziobowe", "weapon", 1, 0, "M", $shipType->id],
+            ["Działko lewe", "weapon", 0, 1, "S", $shipType->id],
+            ["Działko prawe", "weapon", 2, 1, "S", $shipType->id],
+
+            ["Pancerz dziobowy", "armor", 1, 0, "M", $shipType->id],
+            ["Pancerz dziobowy", "armor", 3, 0, "M", $shipType->id],
+            ["Pancerz główny", "armor", 0, 1, "M", $shipType->id],
+            ["Pancerz główny", "armor", 1, 1, "M", $shipType->id],
+            ["Pancerz główny", "armor", 2, 1, "M", $shipType->id],
+            ["Pancerz główny", "armor", 3, 1, "M", $shipType->id],
+            ["Pancerz rufowy", "armor", 3, 2, "M", $shipType->id]
+        ];
+
+        $slotTypes = generateSlotTypes($slotTypeData);
+
+        
+        $slots = new \Illuminate\Database\Eloquent\Collection;
+        foreach($slotTypes as $type){
+            $slots[] = Slot::create([
+                'slot_type_id' => $type->id,
+                'ship_id' => $ship->id
+            ]);
+        }
+        //Stworzono sloty
+
+
+        //STACJA HANDLOWA
         $ahmar = ShipType::where('name', 'Ahmar')->first();
         if(!$ahmar){
             $shipType = ShipType::create([
@@ -387,7 +450,7 @@ class SetupController extends Controller
                 'status' => 1,
                 'profile_id' => $profile->id
             ]);
-            echo "Stworzono stację Ahmar\n";
+            echo "Stworzono stację Ahmar<br>";
 
             $cargoGeneral = Cargo::create([
                 'volume' => 10000,
@@ -413,7 +476,7 @@ class SetupController extends Controller
                 'unloading_time' => 60,
                 'ship_id' => $ship->id
             ]);
-            echo "Stworzono ładownie\n";
+            echo "Stworzono ładownie<br>";
         }
 
     }

@@ -85,7 +85,7 @@ if(!function_exists('currentShip')){
     $profile = currentProfile();
     //TODO
     $ship = Ship::where('profile_id', $profile->id)->first();
-
+    //dd($ship);
     return $ship;
   }
 }
@@ -93,7 +93,12 @@ if(!function_exists('currentShip')){
 if(!function_exists('suitableCargo')){
   function suitableCargo($item, $shipId=0){
     //TODO
-    if(!$shipId) $cargoHolds = Cargo::where('ship_id', currentShip()->id)->get();
+    if(!$shipId) {
+      $ship = currentShip();
+    if(!$ship) return null;
+    
+    $cargoHolds = Cargo::where('ship_id', $ship->id)->get();
+    }
     else $cargoHolds = Cargo::where('ship_id', $shipId)->get();
     
 
@@ -113,7 +118,7 @@ if(!function_exists('suitableCargo')){
     foreach ($cargoHolds as $cargo)
       if($cargo->type == "general") return $cargo;
       
-    return abort(404);
+    return null;
   }
 }
 
