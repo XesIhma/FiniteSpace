@@ -112,11 +112,8 @@ class ShoppingController extends Controller
         $buyer = currentProfile();
         $price = $offer->price;
         if($buyer->money < $price) return back()->with('error', 'Masz za mało pieniędzy');
-
-        $cargo = suitableCargo($item);
-        if(!$cargo) return back()->with('error', 'Nie masz odpowiedniej ładowni, lub w ogóle statku');
                 
-        $result = DB::transaction(function() use($price, $buyer, $seller, $item, $offer, $cargo){
+        $result = DB::transaction(function() use($price, $buyer, $seller, $item, $offer){
             $buyer->money -= $price;
             $buyer->save();
                     
@@ -126,7 +123,6 @@ class ShoppingController extends Controller
             $item->profile_id = $buyer->id;
             $item->last_price = $price;
             $item->price = 0;
-            $item->cargo_id = $cargo->id;
             $item->save();
             $offer->update([
                 'buyer_id' => $buyer->id,
@@ -141,27 +137,26 @@ class ShoppingController extends Controller
 
     function take(Request $request){
         $item = findItem($request->input('category'), $request->input('item_id'));
+        if(!$item) return back()->with('error', 'Nie znaleziono przedmiotu');
+
         $purchase = Offer::where('item_id', $item->id)->first();
-        if(!$purchase->is_taken){
-            if($item){
-                $ship = currentShip();
-                $cargo = Cargo::where([
-                    ['ship_id', '=', $ship->id],
-                    ['type', '=', 'general'] //TODO
-                ])->first();
-                if($cargo){
-                    $item->cargo_id = $cargo->id;
-                    $purchase->is_taken = 1;
-                    $item->save();
-                    $purchase->save();
-                    return back()->with('success', "Udało Ci się odebrać ten przedmiot");
-                }
-                return back()->with('error', 'Coś poszło nie tak');
-            }
-            return back()->with('error', 'Nie znaleziono przedmiotu');
-        }
-        return back()->with('error', 'Przedmiot został już odebrany');
+        if(!$purchase) return back()->with('error', 'Nie znaleziono zakupu');
         
+        $cargo = suitableCargo($item);
+        if(!$cargo) return back()->with('error', 'Nie masz odpowiedniej ładowni, lub w ogóle statku');
+
+        if($purchase->is_taken) return back()->with('error', 'Przedmiot został już odebrany');
+
+        $result = DB::transaction(function() use($item, $purchase, $cargo){
+            $item->cargo_id = $cargo->id;
+            $purchase->is_taken = 1;
+            $item->save();
+            $purchase->save();
+            return 1;
+        });
+        
+        if($result) return back()->with('success', "Udało Ci się odebrać ten przedmiot");
+        else return back()->with('error', 'Coś poszło nie tak');
     }
 
     

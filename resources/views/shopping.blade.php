@@ -103,7 +103,7 @@
 					@if($position->is_taken)
 						<a href="#" class="inactive">ODEBRANO</a>
 					@else
-						<a href="take?category={{$category[0]}}&item_id={{$position->id}}" class="active">ODBIERZ</a>
+						<a href="take?offer_id={{$position->id}}" class="active">ODBIERZ</a>
 					@endif
 				</div>
 				

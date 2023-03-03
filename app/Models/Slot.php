@@ -17,8 +17,6 @@ class Slot extends Model
         return $this->slotType->type;
     }
     public function item(){
-        if($this->type == "engine") return $this->hasOne(Engine::class);
-        else if($this->type == "weapon") return $this->hasOne(Weapon::class);
-        else if($this->type == "armor") return $this->hasOne(Armor::class);
+        return $this->hasOne(Item::class);
     }
 }
